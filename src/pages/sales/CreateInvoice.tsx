@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Plus, Trash2, Save } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useOrganization } from '../../context/OrganizationContext';
+import { MOCK_PRODUCTS } from '../../pages/inventory/Products';
 
 interface InvoiceItem {
   id: string;
+  productId?: string;
   description: string;
   quantity: number;
   rate: number;
@@ -11,9 +15,25 @@ interface InvoiceItem {
 
 export const CreateInvoice: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { settings } = useOrganization();
+  const [formData, setFormData] = useState({
+    clientName: '',
+    date: new Date().toISOString().split('T')[0],
+    warehouseId: '',
+  });
+
+  React.useEffect(() => {
+    const defaultWarehouse = settings.warehouses?.find(w => w.isDefault) || settings.warehouses?.[0];
+    if (defaultWarehouse && !formData.warehouseId) {
+      setFormData(prev => ({ ...prev, warehouseId: defaultWarehouse.id }));
+    }
+  }, [settings.warehouses]);
+
   const [items, setItems] = useState<InvoiceItem[]>([
     { id: '1', description: '', quantity: 1, rate: 0 },
   ]);
+  const [terms, setTerms] = useState('');
 
   const addItem = () => {
     setItems([...items, { id: Date.now().toString(), description: '', quantity: 1, rate: 0 }]);
@@ -32,39 +52,57 @@ export const CreateInvoice: React.FC = () => {
   };
 
   const subtotal = items.reduce((sum, item) => sum + item.quantity * item.rate, 0);
-  const tax = subtotal * 0.1; // 10% tax example
+  const tax = subtotal * (settings.vatRate / 100);
   const total = subtotal + tax;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Invoice Data:', { items, subtotal, total });
-    alert('Invoice created successfully (Mock)');
+    console.log('Invoice Data:', { ...formData, items, subtotal, total, terms });
+    alert(t('sales.success.invoiceCreated'));
     navigate('/sales/invoices');
   };
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-900">Create New Invoice</h1>
+        <h1 className="text-2xl font-bold text-gray-900">{t('sales.invoices.createTitle')}</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="bg-white shadow rounded-lg p-6 space-y-6">
         {/* Client Details Section */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Client Name</label>
+            <label className="block text-sm font-medium text-gray-700">{t('sales.clientName')}</label>
             <input
               type="text"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
-              placeholder="Enter client name"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              placeholder={t('sales.enterClientName')}
+              value={formData.clientName}
+              onChange={(e) => setFormData({...formData, clientName: e.target.value})}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Invoice Date</label>
+            <label className="block text-sm font-medium text-gray-700">{t('sales.sourceWarehouse')}</label>
+            <select
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              value={formData.warehouseId}
+              onChange={(e) => setFormData({...formData, warehouseId: e.target.value})}
+              required
+            >
+              <option value="">{t('sales.selectWarehouse')}</option>
+              {settings.warehouses?.map(w => (
+                <option key={w.id} value={w.id}>{w.name}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">{t('sales.invoices.invoiceDate')}</label>
             <input
               type="date"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              value={formData.date}
+              onChange={(e) => setFormData({...formData, date: e.target.value})}
               required
             />
           </div>
@@ -72,15 +110,38 @@ export const CreateInvoice: React.FC = () => {
 
         {/* Invoice Items */}
         <div className="mt-8">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Items</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-4">{t('sales.items')}</h3>
           <div className="space-y-4">
             {items.map((item) => (
-              <div key={item.id} className="flex items-center space-x-4">
+              <div key={item.id} className="flex items-center space-x-4 rtl:space-x-reverse">
+                <div className="w-48">
+                  <select
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+                    value={item.productId || ''}
+                    onChange={(e) => {
+                      const product = MOCK_PRODUCTS.find(p => p.id === e.target.value);
+                      if (product) {
+                        setItems(items.map(i => 
+                          i.id === item.id 
+                            ? { ...i, productId: product.id, description: product.name, rate: product.unit_price } 
+                            : i
+                        ));
+                      } else {
+                        updateItem(item.id, 'productId', e.target.value);
+                      }
+                    }}
+                  >
+                    <option value="">{t('sales.selectProduct')}</option>
+                    {MOCK_PRODUCTS.map(p => (
+                      <option key={p.id} value={p.id}>{p.name}</option>
+                    ))}
+                  </select>
+                </div>
                 <div className="flex-1">
                   <input
                     type="text"
-                    placeholder="Description"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
+                    placeholder={t('sales.description')}
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
                     value={item.description}
                     onChange={(e) => updateItem(item.id, 'description', e.target.value)}
                     required
@@ -89,8 +150,8 @@ export const CreateInvoice: React.FC = () => {
                 <div className="w-24">
                   <input
                     type="number"
-                    placeholder="Qty"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
+                    placeholder={t('sales.quantity')}
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
                     value={item.quantity}
                     onChange={(e) => updateItem(item.id, 'quantity', Number(e.target.value))}
                     min="1"
@@ -99,16 +160,16 @@ export const CreateInvoice: React.FC = () => {
                 <div className="w-32">
                   <input
                     type="number"
-                    placeholder="Rate"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2"
+                    placeholder={t('sales.rate')}
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
                     value={item.rate}
                     onChange={(e) => updateItem(item.id, 'rate', Number(e.target.value))}
                     min="0"
                     step="0.01"
                   />
                 </div>
-                <div className="w-32 text-right font-medium text-gray-900">
-                  ${(item.quantity * item.rate).toFixed(2)}
+                <div className="w-32 text-right rtl:text-left font-medium text-gray-900">
+                  {settings.currency} {(item.quantity * item.rate).toFixed(2)}
                 </div>
                 <button
                   type="button"
@@ -126,27 +187,43 @@ export const CreateInvoice: React.FC = () => {
               onClick={addItem}
               className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              <Plus className="h-4 w-4 mr-2" />
-              Add Item
+              <Plus className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0" />
+              {t('sales.addItem')}
             </button>
           </div>
         </div>
 
-        {/* Totals */}
-        <div className="mt-8 border-t border-gray-200 pt-8">
-          <div className="flex justify-end">
+        {/* Footer Section: Terms & Totals */}
+        <div className="mt-8 border-t border-gray-200 pt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Terms and Conditions */}
+          <div>
+            <label htmlFor="terms" className="block text-sm font-medium text-gray-700">
+              {t('sales.termsConditions')}
+            </label>
+            <textarea
+              id="terms"
+              rows={4}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              placeholder={t('sales.enterTerms')}
+              value={terms}
+              onChange={(e) => setTerms(e.target.value)}
+            />
+          </div>
+
+          {/* Totals */}
+          <div className="flex justify-end items-start">
             <div className="w-64 space-y-3">
               <div className="flex justify-between text-sm text-gray-500">
-                <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>{t('sales.subtotal')}</span>
+                <span>{settings.currency} {subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm text-gray-500">
-                <span>Tax (10%)</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>{t('sales.vat')} ({settings.vatRate}%)</span>
+                <span>{settings.currency} {tax.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-base font-medium text-gray-900">
-                <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+                <span>{t('sales.total')}</span>
+                <span>{settings.currency} {total.toFixed(2)}</span>
               </div>
             </div>
           </div>
@@ -157,8 +234,8 @@ export const CreateInvoice: React.FC = () => {
             type="submit"
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            <Save className="h-5 w-5 mr-2" />
-            Save Invoice
+            <Save className="h-5 w-5 mr-2 rtl:ml-2 rtl:mr-0" />
+            {t('sales.invoices.save')}
           </button>
         </div>
       </form>

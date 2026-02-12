@@ -1,0 +1,1216 @@
+{
+  "common": {
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search...",
+    "actions": "Actions",
+    "status": "Status",
+    "date": "Date",
+    "due": "Due",
+    "print": "Print",
+    "printPreview": "Print Preview",
+    "export": "Export",
+    "view": "View",
+    "viewDetails": "View Details",
+    "download": "Download",
+    "send": "Send",
+    "close": "Close",
+    "paid": "Paid",
+    "pending": "Pending",
+    "overdue": "Overdue",
+    "draft": "Draft",
+    "issued": "Issued",
+    "settled": "Settled",
+    "failed": "Failed",
+    "loading": "Loading...",
+    "noData": "No data available",
+    "confirmDelete": "Are you sure you want to delete this item?",
+    "success": "Success",
+    "error": "Error",
+    "filter": "Filter",
+    "saveSettings": "Save Settings",
+    "savedSuccessfully": "Settings saved successfully!",
+    "language": "Language",
+    "selectLanguage": "Select Language",
+    "english": "English",
+    "arabic": "Arabic",
+    "active": "Active",
+    "inactive": "Inactive",
+    "sent": "Sent",
+    "received": "Received",
+    "cancelled": "Cancelled",
+    "confirmed": "Confirmed",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "returned": "Returned",
+    "printTemplate": {
+      "vatNo": "VAT #",
+      "billTo": "Bill To",
+      "date": "Date",
+      "dueDate": "Due Date",
+      "description": "Description",
+      "quantity": "Qty",
+      "rate": "Rate",
+      "amount": "Amount",
+      "terms": "Terms & Conditions",
+      "subtotal": "Subtotal",
+      "vat": "VAT",
+      "total": "Total",
+      "authorizedSignature": "Authorized Signature",
+      "thankYou": "Thank you for your business!"
+    },
+    "months": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dec"
+    },
+    "income": "Income",
+    "expense": "Expense",
+    "countries": {
+      "Saudi Arabia": "Saudi Arabia",
+      "United Arab Emirates": "United Arab Emirates",
+      "Kuwait": "Kuwait",
+      "Qatar": "Qatar",
+      "Bahrain": "Bahrain",
+      "Oman": "Oman",
+      "India": "India",
+      "United Kingdom": "United Kingdom",
+      "United States": "United States"
+    },
+    "paymentModes": {
+      "Bank Transfer": "Bank Transfer",
+      "Cheque": "Cheque",
+      "Cash": "Cash",
+      "Card": "Card",
+      "Online": "Online"
+    }
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "sales": "Sales",
+    "clients": "Clients & Prospects",
+    "quotations": "Quotations & Estimates",
+    "proformaInvoices": "Proforma Invoices",
+    "invoices": "Invoices",
+    "paymentReceipts": "Payment Receipts",
+    "salesOrders": "Sales Orders",
+    "deliveryChallans": "Delivery Challans",
+    "creditNotes": "Credit Notes",
+    "purchase": "Purchase",
+    "vendors": "Vendors",
+    "purchaseOrders": "Purchase Orders",
+    "bills": "Bills",
+    "debitNotes": "Debit Notes",
+    "paymentsMade": "Payments Made",
+    "finance": "Finance",
+    "glAccounts": "GL Accounts",
+    "expenses": "Expenses",
+    "transactions": "Transactions",
+    "balanceSheet": "Balance Sheet",
+    "profitLoss": "Profit & Loss",
+    "dayBook": "Day Book",
+    "cashFlow": "Cash Flow",
+    "trialBalance": "Trial Balance",
+    "zatcaReports": "ZATCA Reports",
+    "inventory": "Inventory",
+    "products": "Products",
+    "stockAdjustments": "Stock Adjustments",
+    "stockTransfers": "Stock Transfers",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "stats": {
+      "totalRevenue": "Total Revenue",
+      "outstandingInvoices": "Outstanding Invoices",
+      "totalClients": "Total Clients",
+      "growth": "Growth"
+    },
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity"
+  },
+  "inventory": {
+    "stockTransfers": {
+      "title": "Stock Transfers",
+      "subtitle": "Manage internal stock movements",
+      "create": "New Transfer",
+      "searchPlaceholder": "Search transfers...",
+      "table": {
+        "date": "Date",
+        "reference": "Reference",
+        "from": "From",
+        "to": "To",
+        "items": "Items",
+        "status": "Status"
+      },
+      "form": {
+        "title": "New Stock Transfer",
+        "reference": "Reference",
+        "date": "Date",
+        "fromWarehouse": "From Warehouse",
+        "toWarehouse": "To Warehouse",
+        "selectSource": "Select Source",
+        "selectDestination": "Select Destination",
+        "status": "Status",
+        "items": "Items",
+        "product": "Product",
+        "selectProduct": "Select Product",
+        "available": "Available",
+        "quantity": "Quantity",
+        "notes": "Notes / Remarks",
+        "add": "Add Item",
+        "cancel": "Cancel",
+        "save": "Save Transfer",
+        "errors": {
+          "noItems": "Please add at least one item",
+          "sameWarehouse": "Source and destination warehouses cannot be the same"
+        }
+      },
+      "status": {
+        "draft": "Draft",
+        "in_transit": "In Transit",
+        "completed": "Completed"
+      },
+      "printTitle": "Stock Transfer {{reference}}",
+      "print": {
+        "title": "Stock Transfer Note",
+        "transferDetails": "Transfer Details",
+        "from": "From",
+        "to": "To",
+        "date": "Date",
+        "reference": "Reference",
+        "status": "Status",
+        "items": "Items",
+        "product": "Product",
+        "quantity": "Quantity"
+      }
+    },
+    "stockAdjustments": {
+      "title": "Stock Adjustments",
+      "subtitle": "Manage stock levels and corrections",
+      "create": "New Adjustment",
+      "searchPlaceholder": "Search adjustments...",
+      "table": {
+        "date": "Date",
+        "reference": "Reference",
+        "warehouse": "Warehouse",
+        "reason": "Reason",
+        "itemsAffected": "Items Affected",
+        "status": "Status"
+      },
+      "form": {
+        "title": "New Stock Adjustment",
+        "reference": "Reference",
+        "date": "Date",
+        "warehouse": "Warehouse",
+        "selectWarehouse": "Select Warehouse",
+        "reason": "Reason",
+        "items": "Items",
+        "product": "Product",
+        "selectProduct": "Select Product",
+        "currentStock": "Current Stock",
+        "adjustedStock": "Adjusted Stock",
+        "difference": "Difference",
+        "qtyChange": "Quantity Change (+/-)",
+        "qtyChangePlaceholder": "+/- Qty",
+        "add": "Add Item",
+        "save": "Save Adjustment",
+        "cancel": "Cancel",
+        "errors": {
+          "noItems": "Please add at least one item"
+        }
+      },
+      "reasons": {
+        "stocktake": "Stocktake",
+        "damaged": "Damaged",
+        "theft": "Theft",
+        "received": "Received",
+        "other": "Other"
+      },
+      "status": {
+        "draft": "Draft",
+        "adjusted": "Adjusted"
+      },
+      "printTitle": "Stock Adjustment {{reference}}",
+      "print": {
+        "title": "Stock Adjustment Note",
+        "adjustmentDetails": "Adjustment Details",
+        "warehouse": "Warehouse",
+        "reason": "Reason",
+        "date": "Date",
+        "reference": "Reference",
+        "location": "Location",
+        "items": "Items",
+        "product": "Product",
+        "itemDescription": "Item Description",
+        "adjustment": "Adjustment",
+        "currentStock": "Current Stock",
+        "adjustedQty": "Adjusted Qty",
+        "newStock": "New Stock",
+        "preparedBy": "Prepared By",
+        "authorizedBy": "Authorized By",
+        "disclaimer": "This document serves as an official record of stock adjustment."
+      }
+    },
+    "products": {
+      "title": "Inventory Products",
+      "subtitle": "Manage your product catalog and stock levels",
+      "printList": "Print List",
+      "add": "Add Product",
+      "searchPlaceholder": "Search products by name or SKU...",
+      "table": {
+        "details": "Product Details",
+        "category": "Category",
+        "stock": "Stock",
+        "unitPrice": "Unit Price",
+        "status": "Status"
+      },
+      "form": {
+        "addTitle": "Add New Product",
+        "editTitle": "Edit Product",
+        "name": "Product Name",
+        "sku": "SKU",
+        "category": "Category",
+        "selectCategory": "Select Category",
+        "unitPrice": "Unit Price",
+        "costPrice": "Cost Price",
+        "currentStock": "Current Stock",
+        "reorderPoint": "Reorder Point",
+        "unit": "Unit",
+        "unitPlaceholder": "e.g. pcs, kg, m",
+        "description": "Description",
+        "status": "Status",
+        "save": "Save Product",
+        "update": "Update Product"
+      },
+      "categories": {
+        "rawMaterials": "Raw Materials",
+        "finishedGoods": "Finished Goods",
+        "equipment": "Equipment",
+        "consumables": "Consumables"
+      },
+      "print": {
+        "listTitle": "Product Stock List",
+        "productTitle": "Print Product: {{name}}",
+        "detailsTitle": "PRODUCT DETAILS",
+        "generatedOn": "Generated on",
+        "sku": "SKU",
+        "category": "Category",
+        "unit": "Unit",
+        "stockQuantity": "Stock Quantity",
+        "reorderPoint": "Reorder Point",
+        "unitPrice": "Unit Price",
+        "costPrice": "Cost Price",
+        "status": "Status",
+        "endOfSheet": "End of Product Sheet"
+      }
+    }
+  },
+  "finance": {
+    "dashboard": {
+      "title": "Finance Overview",
+      "stats": {
+        "totalBalance": "Total Balance",
+        "totalIncome": "Total Income",
+        "totalExpenses": "Total Expenses",
+        "netProfit": "Net Profit"
+      },
+      "charts": {
+        "incomeVsExpenses": "Income vs Expenses",
+        "monthlyBreakdown": "Monthly Breakdown",
+        "income": "Income",
+        "expense": "Expense"
+      },
+      "filters": {
+        "thisYear": "This Year",
+        "lastYear": "Last Year"
+      }
+    },
+    "glAccounts": {
+      "title": "Chart of Accounts",
+      "addAccount": "Add Account",
+      "printList": "Print List",
+      "searchPlaceholder": "Search by account name or code...",
+      "table": {
+        "code": "Code",
+        "accountName": "Account Name",
+        "balance": "Balance",
+        "status": "Status"
+      },
+      "form": {
+        "title": "Add GL Account",
+        "accountType": "Account Type",
+        "accountCode": "Account Code",
+        "accountName": "Account Name",
+        "description": "Description",
+        "save": "Save Account",
+        "cancel": "Cancel"
+      },
+      "printTitle": "Print Chart of Accounts",
+      "print": {
+        "title": "CHART OF ACCOUNTS",
+        "generatedOn": "Generated on",
+        "code": "Code",
+        "accountName": "Account Name",
+        "description": "Description",
+        "balance": "Balance",
+        "status": "Status",
+        "endOfReport": "End of Report",
+        "types": {
+          "Asset": "Asset",
+          "Liability": "Liability",
+          "Equity": "Equity",
+          "Revenue": "Revenue",
+          "Expense": "Expense"
+        }
+      }
+    },
+    "expenses": {
+      "title": "Expenses",
+      "addExpense": "Add Expense",
+      "searchPlaceholder": "Search expenses...",
+      "categories": {
+        "officeSupplies": "Office Supplies",
+        "travel": "Travel",
+        "software": "Software",
+        "utilities": "Utilities",
+        "marketing": "Marketing",
+        "other": "Other"
+      },
+      "table": {
+        "date": "Date",
+        "vendor": "Vendor",
+        "category": "Category",
+        "description": "Description",
+        "status": "Status",
+        "amount": "Amount"
+      },
+      "form": {
+        "title": "Add New Expense",
+        "vendor": "Vendor",
+        "category": "Category",
+        "amount": "Amount",
+        "date": "Date",
+        "description": "Description",
+        "save": "Save Expense",
+        "cancel": "Cancel",
+        "selectCategory": "Select Category"
+      },
+      "printTitle": "Print Expense Voucher #{{id}}",
+      "print": {
+        "title": "Expense Voucher",
+        "paidTo": "Paid To",
+        "category": "Category",
+        "expenseInfo": "Expense Information",
+        "date": "Date",
+        "totalAmount": "Total Amount",
+        "description": "Description",
+        "noDescription": "No description provided.",
+        "requestedBy": "Requested By",
+        "approvedBy": "Approved By",
+        "receivedBy": "Received By",
+        "record": "Expense Record"
+      }
+    },
+    "transactions": {
+      "title": "Transactions Ledger",
+      "print": "Print",
+      "exportCsv": "Export CSV",
+      "searchPlaceholder": "Search transactions...",
+      "categories": {
+        "sales": "Sales",
+        "rent": "Rent",
+        "software": "Software"
+      },
+      "table": {
+        "date": "Date",
+        "description": "Description",
+        "reference": "Reference",
+        "category": "Category",
+        "amount": "Amount"
+      },
+      "printTitle": "Print Transactions Ledger"
+    },
+    "balanceSheet": {
+      "title": "Balance Sheet",
+      "asOf": "As of {{date}}",
+      "assets": "Assets",
+      "totalAssets": "Total Assets",
+      "liabilities": "Liabilities",
+      "totalLiabilities": "Total Liabilities",
+      "equity": "Equity",
+      "totalEquity": "Total Equity",
+      "totalLiabilitiesEquity": "Total Liabilities & Equity",
+      "printTitle": "Print Balance Sheet"
+    },
+    "profitLoss": {
+      "title": "Profit & Loss",
+      "incomeStatement": "Income Statement",
+      "revenue": "Revenue",
+      "totalRevenue": "Total Revenue",
+      "cogs": "Cost of Goods Sold",
+      "totalCOGS": "Total Cost of Goods Sold",
+      "grossProfit": "Gross Profit",
+      "operatingExpenses": "Operating Expenses",
+      "totalOperatingExpenses": "Total Operating Expenses",
+      "netIncome": "Net Income",
+      "printTitle": "Print Profit & Loss",
+      "dateRange": "From {{startDate}} to {{endDate}}"
+    },
+    "trialBalance": {
+      "title": "Trial Balance",
+      "description": "Closing balances of all ledger accounts",
+      "code": "Code",
+      "accountName": "Account Name",
+      "type": "Type",
+      "debit": "Debit",
+      "credit": "Credit",
+      "total": "Total",
+      "printTitle": "Print Trial Balance",
+      "asOf": "As of {{date}}"
+    },
+    "cashFlow": {
+      "title": "Cash Flow Statement",
+      "subtitle": "Statement of Cash Flows (Direct/Indirect)",
+      "operatingActivities": "Operating Activities",
+      "netIncome": "Net Income",
+      "adjustmentsNonCash": "Adjustments for non-cash items",
+      "increaseInAR": "(Increase) in Accounts Receivable",
+      "increaseInInventory": "(Increase) in Inventory",
+      "increaseInAP": "Increase in Accounts Payable",
+      "netCashOperating": "Net Cash from Operating Activities",
+      "investingActivities": "Investing Activities",
+      "purchaseEquipment": "Purchase of Equipment",
+      "netCashInvesting": "Net Cash from Investing Activities",
+      "financingActivities": "Financing Activities",
+      "ownersDraw": "Owner's Draw / Dividends",
+      "netCashFinancing": "Net Cash from Financing Activities",
+      "netChangeCash": "Net Change in Cash",
+      "beginningCash": "Beginning Cash Balance",
+      "endingCash": "Ending Cash Balance",
+      "printTitle": "Print Cash Flow Statement",
+      "dateRange": "From {{startDate}} to {{endDate}}"
+    },
+    "dayBook": {
+      "title": "Day Book",
+      "subtitle": "Daily Transaction Register",
+      "voucherNo": "Voucher No",
+      "type": "Type",
+      "description": "Description",
+      "account": "Account",
+      "debit": "Debit",
+      "credit": "Credit",
+      "noTransactions": "No transactions found for this date.",
+      "filterType": "Filter Type",
+      "searchPlaceholder": "Search voucher, description or account..."
+    },
+    "zatcaReports": {
+      "title": "ZATCA Compliance Report",
+      "subtitle": "E-Invoicing status and VAT summary",
+      "invoiceNumber": "Invoice #",
+      "date": "Date",
+      "customer": "Customer",
+      "taxableAmount": "Taxable Amount",
+      "vatAmount": "VAT Amount",
+      "totalAmount": "Total Amount",
+      "status": "Status",
+      "totalInvoices": "Total Invoices",
+      "reported": "Reported to ZATCA",
+      "pending": "Pending Reporting",
+      "printTitle": "Print ZATCA Report"
+    }
+  },
+  "reports": {
+    "print": {
+      "period": "Period",
+      "vatNo": "VAT No",
+      "generatedBy": "Generated by {{company}} Accounting System on {{date}}",
+      "generatedOn": "Generated: {{date}}"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "totalRevenue": "Total Revenue",
+    "totalExpenses": "Total Expenses",
+    "netIncome": "Net Income",
+    "recentTransactions": "Recent Transactions",
+    "topSellingProducts": "Top Selling Products",
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity to display.",
+    "stats": {
+      "totalRevenue": "Total Revenue",
+      "outstandingInvoices": "Outstanding Invoices",
+      "totalClients": "Total Clients",
+      "growth": "Growth"
+    }
+  },
+  "sales": {
+    "success": {
+       "invoiceCreated": "Invoice created successfully",
+       "quotationCreated": "Quotation created successfully",
+       "proformaCreated": "Proforma Invoice created successfully",
+       "challanCreated": "Delivery Challan created successfully",
+       "salesOrderCreated": "Sales Order created successfully",
+       "creditNoteCreated": "Credit Note created successfully",
+       "paymentCreated": "Payment Receipt recorded successfully"
+    },
+    "newClient": "New Client",
+    "newQuotation": "New Quotation",
+    "newInvoice": "New Invoice",
+    "invoiceNumber": "Invoice #",
+    "clientName": "Client Name",
+    "amount": "Amount",
+    "dueDate": "Due Date",
+    "items": "Items",
+    "addItem": "Add Item",
+    "termsConditions": "Terms & Conditions",
+    "enterTerms": "Enter terms and conditions...",
+    "subtotal": "Subtotal",
+    "vat": "VAT",
+    "total": "Total",
+    "product": "Product",
+    "selectProduct": "Select Product",
+    "description": "Description",
+    "quantity": "Qty",
+    "rate": "Rate",
+      "unit": "Unit",
+      "sourceWarehouse": "Source Warehouse",
+      "selectWarehouse": "Select Warehouse",
+      "enterClientName": "Enter client name",
+      "notes": "Notes / Remarks",
+      "notesPlaceholder": "Enter any additional notes...",
+      "clients": {
+      "title": "Clients & Prospects",
+      "subtitle": "Manage your customer relationships",
+      "addNew": "Add New Client",
+      "printList": "Print List",
+      "printProfile": "Print Profile",
+      "searchPlaceholder": "Search clients...",
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "table": {
+        "clientDetails": "Client Details",
+        "contactInfo": "Contact Info",
+        "location": "Location",
+        "status": "Status",
+        "balance": "Balance"
+      },
+      "form": {
+        "customerId": "Customer ID",
+        "customerIdPlaceholder": "e.g. CUST-001",
+        "companyName": "Company Name",
+        "contactPerson": "Contact Person",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "address": "Address",
+        "crNumber": "CR Number",
+        "vatNumber": "VAT Number",
+        "country": "Country",
+        "selectCountry": "Select Country",
+        "vatRate": "VAT Rate (%)",
+        "autoCalculated": "Auto-calculated based on country"
+      },
+      "printTitle": "Print Client {{name}}",
+      "print": {
+        "title": "CLIENT PROFILE",
+        "generatedOn": "Generated on",
+        "contactInfo": "Contact Information",
+        "contactPerson": "Contact Person",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "address": "Address",
+        "businessDetails": "Business Details",
+        "crNumber": "CR Number",
+        "vatNumber": "VAT Number",
+        "vatRate": "Applicable VAT Rate",
+        "currentBalance": "Current Balance",
+        "confidential": "This document contains confidential information."
+      }
+    },
+    "invoices": {
+      "title": "Invoices",
+      "subtitle": "Manage and track your customer invoices",
+      "create": "Create Invoice",
+      "createTitle": "Create New Invoice",
+      "save": "Save Invoice",
+      "invoiceDate": "Invoice Date",
+      "searchPlaceholder": "Search invoices...",
+      "table": {
+        "invoiceNumber": "Invoice #",
+        "client": "Client",
+        "date": "Date",
+        "dueDate": "Due Date",
+        "status": "Status",
+        "amount": "Amount"
+      },
+      "detailsTitle": "Invoice Details: {{number}}",
+      "zatcaQr": "ZATCA E-Invoice QR Code",
+      "zatcaDescription": "Scan to verify invoice validity via ZATCA app. Includes Seller, VAT #, Timestamp, Total, and VAT.",
+      "printTitle": "Print Invoice {{number}}",
+      "print": {
+        "title": "Tax Invoice",
+        "billTo": "Bill To",
+        "invoiceDate": "Invoice Date",
+        "dueDate": "Due Date",
+        "supplyDate": "Supply Date",
+        "subtotalExclVat": "Subtotal (Excl. VAT)",
+        "vat": "VAT",
+        "totalInclVat": "Total (Incl. VAT)",
+        "paymentDetails": "Payment Details",
+        "bank": "Bank",
+        "accountNo": "Account No",
+        "iban": "IBAN",
+        "termsConditions": "Terms & Conditions",
+        "terms1": "Payment due within 15 days.",
+        "terms2": "Please quote invoice number in payment.",
+        "generatedBy": "Generated by System"
+      }
+    },
+    "quotations": {
+      "title": "Quotations & Estimates",
+      "subtitle": "Create and manage quotes for your clients",
+      "create": "Create Quotation",
+      "createTitle": "Create New Quotation",
+      "quotationDate": "Quotation Date",
+      "save": "Save Quotation",
+      "searchPlaceholder": "Search quotations...",
+      "status": {
+        "draft": "Draft",
+        "sent": "Sent",
+        "accepted": "Accepted",
+        "expired": "Expired"
+      },
+      "table": {
+        "number": "Number",
+        "client": "Client",
+        "date": "Date",
+        "expiryDate": "Expiry Date",
+        "status": "Status",
+        "amount": "Amount"
+      },
+      "detailsTitle": "Quotation Details: {{number}}",
+      "printTitle": "Print Quotation {{number}}",
+      "print": {
+        "title": "Quotation",
+        "quotationFor": "Quotation For",
+        "date": "Date",
+        "validUntil": "Valid Until",
+        "itemDescription": "Description",
+        "quantity": "Qty",
+        "rate": "Rate",
+        "amount": "Amount",
+        "termsConditions": "Terms & Conditions",
+        "terms1": "This quotation is valid for the period mentioned above.",
+        "terms2": "Payment terms: 50% advance, balance on delivery.",
+        "terms3": "Delivery time: 1-2 weeks from the date of PO.",
+        "salesRep": "Sales Representative",
+        "clientAcceptance": "Client Acceptance"
+      }
+    },
+    "salesOrders": {
+      "title": "Sales Orders",
+      "subtitle": "Manage and track sales orders",
+      "create": "Create Sales Order",
+      "searchPlaceholder": "Search sales orders...",
+      "status": {
+        "confirmed": "Confirmed",
+        "pending": "Pending",
+        "shipped": "Shipped"
+      },
+      "table": {
+        "number": "Order Number",
+        "date": "Date",
+        "client": "Client",
+        "deliveryDate": "Delivery Date",
+        "status": "Status",
+        "amount": "Amount"
+      },
+      "printTitle": "Print Sales Order {{number}}",
+      "print": {
+        "title": "Sales Order",
+        "billTo": "Bill To",
+        "orderDate": "Order Date",
+        "deliveryDate": "Delivery Date",
+        "itemDescription": "Description",
+        "quantity": "Qty",
+        "rate": "Rate",
+        "amount": "Amount",
+        "termsConditions": "Terms & Conditions",
+        "preparedBy": "Prepared By",
+        "approvedBy": "Approved By",
+        "terms1": "Goods once sold will not be taken back.",
+        "terms2": "Interest @ 18% p.a. will be charged if payment is not made within the due date.",
+        "terms3": "Subject to jurisdiction."
+      }
+    },
+    "deliveryChallans": {
+      "title": "Delivery Challans",
+      "subtitle": "Track and manage delivery challans",
+      "create": "Create Delivery Challan",
+      "createTitle": "Create Delivery Challan",
+      "selectSalesOrder": "Select Sales Order",
+      "selectSalesOrderPlaceholder": "-- Select Sales Order --",
+      "salesOrderHelpText": "Selecting a sales order will auto-fill client details and items.",
+      "challanDate": "Challan Date",
+      "reference": "Reference / PO Number",
+      "referencePlaceholder": "e.g. PO-12345",
+      "vehicleNumber": "Vehicle Number",
+      "vehicleNumberPlaceholder": "e.g. ABC-1234",
+      "driverName": "Driver Name",
+      "driverNamePlaceholder": "Enter driver name",
+      "save": "Save Challan",
+      "searchPlaceholder": "Search delivery challans...",
+      "status": {
+        "delivered": "Delivered",
+        "pending": "Pending",
+        "returned": "Returned"
+      },
+      "table": {
+        "number": "Challan Number",
+        "date": "Date",
+        "client": "Client",
+        "reference": "Reference",
+        "status": "Status",
+        "items": "Items"
+      },
+      "printTitle": "Print Delivery Challan {{number}}",
+      "print": {
+        "title": "Delivery Challan",
+        "deliveredTo": "Delivered To",
+        "clientID": "Client ID",
+        "itemDescription": "Item Description",
+        "quantity": "Quantity",
+        "preparedBy": "Prepared By",
+        "signatureDate": "Signature & Date",
+        "deliveredBy": "Delivered By",
+        "driverSignature": "Driver Signature & Date",
+        "receivedBy": "Received By",
+        "clientSignature": "Client Signature & Date",
+        "disclaimer": "Please check the goods upon delivery. Claims for damaged goods must be made within 24 hours."
+      }
+    },
+    "creditNotes": {
+      "title": "Credit Notes",
+      "subtitle": "Manage sales returns and credits",
+      "create": "Create Credit Note",
+      "createTitle": "Create Credit Note",
+      "creditAgainstInvoice": "Credit Against Invoice",
+      "selectInvoice": "Select Invoice",
+      "autoFillHelp": "Select an invoice to auto-fill client details",
+      "date": "Credit Note Date",
+      "returnToWarehouse": "Return to Warehouse",
+      "reason": "Reason",
+      "reasonPlaceholder": "e.g. Damaged Goods, Pricing Error",
+      "itemsToCredit": "Items to Credit",
+      "save": "Save Credit Note",
+      "searchPlaceholder": "Search credit notes...",
+      "status": {
+        "draft": "Draft",
+        "approved": "Approved",
+        "refunded": "Refunded"
+      },
+      "table": {
+        "number": "Credit Note #",
+        "date": "Date",
+        "client": "Client",
+        "invoiceNumber": "Against Invoice",
+        "status": "Status",
+        "amount": "Amount"
+      },
+      "printTitle": "Print Credit Note {{number}}",
+      "print": {
+        "title": "Credit Note",
+        "creditTo": "Credit To",
+        "date": "Date",
+        "referenceInvoice": "Reference Invoice",
+        "itemDescription": "Description",
+        "quantity": "Qty",
+        "rate": "Rate",
+        "amount": "Amount",
+        "totalCredit": "Total Credit",
+        "termsConditions": "Terms & Conditions",
+        "authorizedBy": "Authorized By",
+        "receivedBy": "Received By",
+        "terms1": "This credit note is valid for adjustment against future invoices.",
+        "terms2": "Not redeemable for cash."
+      }
+    },
+    "paymentReceipts": {
+      "title": "Payment Receipts",
+      "subtitle": "Record and track customer payments",
+      "create": "Record Payment",
+      "createTitle": "Record Payment Receipt",
+      "paymentDate": "Payment Date",
+      "amountReceived": "Amount Received",
+      "paymentMode": "Payment Mode",
+      "referenceNumber": "Reference Number",
+      "referencePlaceholder": "e.g., Transaction ID, Check No.",
+      "remarks": "Remarks / Notes",
+      "remarksPlaceholder": "Enter any notes about this payment...",
+      "modes": {
+        "bankTransfer": "Bank Transfer",
+        "cash": "Cash",
+        "check": "Check",
+        "creditCard": "Credit Card",
+        "onlinePayment": "Online Payment"
+      },
+      "save": "Save Receipt",
+      "searchPlaceholder": "Search payments...",
+      "status": {
+        "unused": "Unused",
+        "partially_used": "Partially Used",
+        "fully_used": "Fully Used"
+      },
+      "table": {
+        "number": "Receipt #",
+        "date": "Date",
+        "client": "Client",
+        "mode": "Payment Mode",
+        "reference": "Reference",
+        "status": "Status",
+        "amount": "Amount"
+      },
+      "printTitle": "Print Receipt {{number}}",
+      "print": {
+        "title": "Payment Receipt",
+        "receivedFrom": "Received From",
+        "clientID": "Client ID",
+        "receiptInfo": "Receipt Information",
+        "receiptDate": "Receipt Date",
+        "paymentMode": "Payment Mode",
+        "reference": "Reference #",
+        "amountReceived": "Amount Received",
+        "remarks": "Remarks",
+        "defaultRemark": "Payment received with thanks.",
+        "preparedBy": "Prepared By",
+        "authorizedSignatory": "Authorized Signatory",
+        "generatedFooter": "This is a computer generated receipt."
+      }
+    },
+    "proformaInvoices": {
+      "title": "Proforma Invoices",
+      "subtitle": "Create and manage proforma invoices",
+      "create": "Create Proforma",
+      "createTitle": "Create Proforma Invoice",
+      "date": "Date",
+      "expiryDate": "Expiry Date",
+      "save": "Save Proforma Invoice",
+      "searchPlaceholder": "Search proforma invoices...",
+      "status": {
+        "draft": "Draft",
+        "sent": "Sent",
+        "accepted": "Accepted",
+        "expired": "Expired",
+        "converted": "Converted"
+      },
+      "table": {
+        "number": "Proforma #",
+        "date": "Date",
+        "client": "Client",
+        "expiryDate": "Expiry Date",
+        "status": "Status",
+        "amount": "Amount"
+      },
+      "detailsTitle": "Proforma Details: {{number}}",
+      "printTitle": "Print Proforma {{number}}",
+      "print": {
+        "title": "Proforma Invoice",
+        "billTo": "Bill To",
+        "bankingDetails": "Banking Details",
+        "terms": "Terms & Conditions",
+        "notTaxInvoice": "This is not a tax invoice.",
+        "validUntil": "Valid until expiry date."
+      }
+    }
+  },
+  "purchase": {
+    "bills": {
+      "title": "Bills",
+      "create": "Create Bill",
+      "searchPlaceholder": "Search bills...",
+      "table": {
+        "billDetails": "Bill Details",
+        "vendor": "Vendor",
+        "date": "Date",
+        "amount": "Amount",
+        "status": "Status"
+      },
+      "printTitle": "Print Bill {{number}}",
+      "print": {
+        "title": "Bill",
+        "vendor": "Vendor",
+        "billDate": "Bill Date",
+        "dueDate": "Due Date",
+        "itemDescription": "Description",
+        "quantity": "Qty",
+        "rate": "Rate",
+        "amount": "Amount"
+      }
+    },
+    "debitNotes": {
+      "title": "Debit Notes",
+      "create": "Create Debit Note",
+      "searchPlaceholder": "Search debit notes...",
+      "selectBill": "Select Bill",
+      "reason": "Reason",
+      "reasonPlaceholder": "e.g. Damaged Goods",
+      "itemsToDebit": "Items to Debit",
+      "table": {
+        "details": "Details",
+        "vendor": "Vendor",
+        "date": "Date",
+        "amount": "Amount",
+        "status": "Status",
+        "ref": "Ref"
+      },
+      "printTitle": "Print Debit Note {{number}}"
+    },
+    "paymentsMade": {
+      "title": "Payments Made",
+      "subtitle": "Track payments made to vendors",
+      "create": "Record Payment",
+      "searchPlaceholder": "Search payments...",
+      "table": {
+        "voucher": "Voucher #",
+        "date": "Date",
+        "vendor": "Vendor",
+        "mode": "Mode",
+        "status": "Status",
+        "amount": "Amount",
+        "ref": "Ref"
+      },
+      "printTitle": "Print Payment Voucher {{number}}"
+    },
+    "vendors": {
+      "title": "Vendors",
+      "subtitle": "Manage your supplier relationships",
+      "add": "Add Vendor",
+      "printList": "Print List",
+      "searchPlaceholder": "Search vendors...",
+      "table": {
+        "vendorDetails": "Vendor Details",
+        "contactInfo": "Contact Info",
+        "location": "Location",
+        "status": "Status",
+        "balance": "Balance"
+      },
+      "form": {
+        "title": "Add New Vendor",
+        "vendorId": "Vendor ID",
+        "vendorIdPlaceholder": "e.g. VEND-001",
+        "companyName": "Company Name",
+        "contactPerson": "Contact Person",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "address": "Address",
+        "crNumber": "CR Number",
+        "vatNumber": "VAT Number",
+        "country": "Country",
+        "selectCountry": "Select Country",
+        "vatRate": "VAT Rate (%)",
+        "autoCalculated": "Auto-calculated based on country"
+      },
+      "print": {
+        "vendorTitle": "Print Vendor: {{name}}",
+        "listTitle": "Vendor List",
+        "vendorProfile": "VENDOR PROFILE",
+        "generatedOn": "Generated on",
+        "contactInfo": "Contact Information",
+        "contactPerson": "Contact Person",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "address": "Address",
+        "businessDetails": "Business Details",
+        "crNumber": "CR Number",
+        "vatNumber": "VAT Number"
+      }
+    },
+    "purchaseOrders": {
+      "title": "Purchase Orders",
+      "subtitle": "Manage your purchase orders to vendors",
+      "create": "Create Purchase Order",
+      "searchPlaceholder": "Search orders...",
+      "success": {
+        "created": "Purchase Order created successfully"
+      },
+      "table": {
+        "number": "PO Number",
+        "vendor": "Vendor",
+        "date": "Date",
+        "deliveryDate": "Delivery Date",
+        "status": "Status",
+        "amount": "Amount"
+      },
+      "details": {
+        "title": "PO Details: {{number}}"
+      },
+      "printTitle": "Print Purchase Order {{number}}",
+      "print": {
+        "title": "Purchase Order",
+        "vendor": "Vendor",
+        "orderDate": "PO Date",
+        "deliveryDate": "Expected Delivery",
+        "itemDescription": "Description",
+        "quantity": "Qty",
+        "rate": "Rate",
+        "amount": "Amount"
+      },
+      "form": {
+        "createTitle": "Create Purchase Order",
+        "vendor": "Vendor",
+        "selectVendor": "Select Vendor",
+        "destinationWarehouse": "Destination Warehouse",
+        "selectWarehouse": "Select Warehouse",
+        "orderDate": "Order Date",
+        "expectedDelivery": "Expected Delivery",
+        "items": "Items",
+        "product": "Product",
+        "selectProduct": "Select Product",
+        "description": "Description",
+        "quantity": "Qty",
+        "rate": "Rate",
+        "addItem": "Add Item",
+        "notes": "Notes",
+        "enterNotes": "Enter notes...",
+        "subtotal": "Subtotal",
+        "vat": "VAT",
+        "total": "Total",
+        "save": "Save Purchase Order"
+      }
+    },
+    "debitNotes": {
+      "title": "Debit Notes",
+      "create": "Create Debit Note",
+      "searchPlaceholder": "Search debit notes...",
+      "table": {
+        "details": "Note Details",
+        "vendor": "Vendor",
+        "date": "Date",
+        "amount": "Amount",
+        "status": "Status",
+        "ref": "Ref"
+      },
+      "printTitle": "Print Debit Note {{number}}",
+      "print": {
+        "title": "Debit Note",
+        "vendor": "Vendor",
+        "date": "Date",
+        "refBill": "Ref Bill",
+        "itemDescription": "Description",
+        "quantity": "Qty",
+        "rate": "Rate",
+        "amount": "Amount"
+      }
+    },
+    "paymentsMade": {
+      "title": "Payments Made",
+      "subtitle": "Track payments to vendors",
+      "create": "Record Payment",
+      "searchPlaceholder": "Search payments...",
+      "table": {
+        "voucher": "Voucher #",
+        "date": "Date",
+        "vendor": "Vendor",
+        "mode": "Mode / Reference",
+        "status": "Status",
+        "amount": "Amount",
+        "ref": "Ref"
+      },
+      "printTitle": "Print Payment Voucher {{number}}",
+      "print": {
+        "title": "Payment Voucher",
+        "paidTo": "Paid To",
+        "vendorId": "Vendor ID",
+        "paymentInfo": "Payment Information",
+        "paymentDate": "Payment Date",
+        "paymentMode": "Payment Mode",
+        "reference": "Reference #",
+        "amountPaid": "Amount Paid",
+        "description": "Description / Notes",
+        "preparedBy": "Prepared By",
+        "authorizedSignatory": "Authorized Signatory",
+        "receiversSignature": "Receiver's Signature"
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your organization preferences",
+    "tabs": {
+      "organization": "Organization",
+      "warehouses": "Warehouses",
+      "zatca": "ZATCA E-Invoicing"
+    },
+    "fields": {
+      "companyName": "Company Name",
+      "address": "Address",
+      "country": "Country",
+      "phone": "Phone",
+      "email": "Email",
+      "website": "Website",
+      "taxId": "Tax ID / VAT Number",
+      "commercialRegister": "Commercial Register",
+      "currency": "Currency",
+      "vatRate": "VAT Rate (%)",
+      "bankName": "Bank Name",
+      "accountNumber": "Account Number",
+      "iban": "IBAN"
+    },
+    "warehouses": {
+      "manageText": "Manage your warehouses and inventory locations.",
+      "add": "Add Warehouse",
+      "name": "Name",
+      "location": "Location",
+      "default": "Default",
+      "setDefault": "Set as Default",
+      "delete": "Delete warehouse",
+      "cannotDeleteOnly": "Cannot delete the only warehouse"
+    },
+    "zatca": {
+      "title": "ZATCA Configuration",
+      "description": "Configure ZATCA e-invoicing settings and phase integration.",
+      "enable": "Enable ZATCA Integration",
+      "phase": "Implementation Phase",
+      "phase1": "Phase 1 (Generation - QR Code)",
+      "phase2": "Phase 2 (Integration - Clearance/Reporting)",
+      "production": "Production Environment",
+      "otp": "OTP (From Fatoora Portal)",
+      "connect": "Connect to ZATCA",
+      "connected": "Connected",
+      "disconnect": "Disconnect",
+      "csr": {
+        "title": "CSR Configuration (Phase 2)",
+        "commonName": "Common Name (CN)",
+        "organizationName": "Organization Name (O)",
+        "organizationUnit": "Organization Unit (OU)",
+        "country": "Country (C)",
+        "invoiceType": "Invoice Type",
+        "location": "Location",
+        "invoiceTypePlaceholder": "1100 for Standard, 1000 for Simplified"
+      },
+      "status": {
+        "title": "ZATCA Connection Status",
+        "description": "Connect to ZATCA FATOORA portal for clearance and reporting.",
+        "connecting": "Connecting...",
+        "connectionSuccessful": "Connection Successful",
+        "connectionFailed": "Connection Failed",
+        "ready": "Ready to Connect",
+        "readyDescription": "Ensure all CSR fields above are correctly filled before initiating the connection. This will generate a Certificate Signing Request and submit it to ZATCA."
+      }
+    }
+  }
+}

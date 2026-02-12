@@ -1,18 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
-const tabs = [
-  { name: 'Overview', to: '/finance', end: true },
-  { name: 'GL Accounts', to: '/finance/gl-accounts', end: false },
-  { name: 'Expenses', to: '/finance/expenses', end: false },
-  { name: 'Transactions', to: '/finance/transactions', end: false },
-];
-
 export const FinanceHeader: React.FC = () => {
+  const { t } = useTranslation();
+
+  const tabs = [
+    { name: t('nav.dashboard'), to: '/finance', end: true },
+    { name: t('nav.glAccounts'), to: '/finance/gl-accounts', end: false },
+    { name: t('nav.expenses'), to: '/finance/expenses', end: false },
+    { name: t('nav.transactions'), to: '/finance/transactions', end: false },
+  ];
+
   return (
     <div className="mb-8 border-b border-gray-200">
-      <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+      <nav className="-mb-px flex space-x-8 rtl:space-x-reverse" aria-label="Tabs">
         {tabs.map((tab) => (
           <NavLink
             key={tab.name}

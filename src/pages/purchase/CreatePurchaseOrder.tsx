@@ -1,0 +1,266 @@
+import React, { useState } from 'react';
+import { Plus, Trash2, Save, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useOrganization } from '../../context/OrganizationContext';
+import { MOCK_PRODUCTS } from '../../pages/inventory/Products';
+import { MOCK_VENDORS } from './Vendors';
+
+interface PurchaseOrderItem {
+  id: string;
+  productId?: string;
+  description: string;
+  quantity: number;
+  rate: number;
+}
+
+export const CreatePurchaseOrder: React.FC = () => {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { settings } = useOrganization();
+  const [items, setItems] = useState<PurchaseOrderItem[]>([
+    { id: '1', description: '', quantity: 1, rate: 0 },
+  ]);
+  const [vendorId, setVendorId] = useState('');
+  const [warehouseId, setWarehouseId] = useState('');
+  const [orderDate, setOrderDate] = useState(new Date().toISOString().split('T')[0]);
+  const [expectedDate, setExpectedDate] = useState('');
+  const [notes, setNotes] = useState('');
+
+  React.useEffect(() => {
+    const defaultWarehouse = settings.warehouses?.find(w => w.isDefault) || settings.warehouses?.[0];
+    if (defaultWarehouse) {
+      setWarehouseId(defaultWarehouse.id);
+    }
+  }, [settings.warehouses]);
+
+  const addItem = () => {
+    setItems([...items, { id: Date.now().toString(), description: '', quantity: 1, rate: 0 }]);
+  };
+
+  const removeItem = (id: string) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
+
+  const updateItem = (id: string, field: keyof PurchaseOrderItem, value: string | number) => {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, [field]: value } : item
+      )
+    );
+  };
+
+  const subtotal = items.reduce((sum, item) => sum + item.quantity * item.rate, 0);
+  const tax = subtotal * (settings.vatRate / 100);
+  const total = subtotal + tax;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Purchase Order Data:', { vendorId, warehouseId, orderDate, expectedDate, items, subtotal, total, notes });
+    alert(t('purchase.purchaseOrders.success.created'));
+    navigate('/purchase/orders');
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center">
+        <button 
+          onClick={() => navigate('/purchase/orders')}
+          className="mr-4 rtl:ml-4 rtl:mr-0 text-gray-500 hover:text-gray-700"
+        >
+          <ArrowLeft className="h-6 w-6 rtl:rotate-180" />
+        </button>
+        <h1 className="text-2xl font-bold text-gray-900">{t('purchase.purchaseOrders.form.createTitle')}</h1>
+      </div>
+
+      <form onSubmit={handleSubmit} className="bg-white shadow rounded-lg p-6 space-y-6">
+        {/* Vendor Details Section */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">{t('purchase.purchaseOrders.form.vendor')}</label>
+            <select
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              value={vendorId}
+              onChange={(e) => setVendorId(e.target.value)}
+              required
+            >
+              <option value="">{t('purchase.purchaseOrders.form.selectVendor')}</option>
+              {MOCK_VENDORS.map(v => (
+                <option key={v.id} value={v.id}>{v.companyName}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">{t('purchase.purchaseOrders.form.destinationWarehouse')}</label>
+            <select
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              value={warehouseId}
+              onChange={(e) => setWarehouseId(e.target.value)}
+              required
+            >
+              <option value="">{t('purchase.purchaseOrders.form.selectWarehouse')}</option>
+              {settings.warehouses?.map(w => (
+                <option key={w.id} value={w.id}>{w.name}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">{t('purchase.purchaseOrders.form.orderDate')}</label>
+            <input
+              type="date"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              value={orderDate}
+              onChange={(e) => setOrderDate(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">{t('purchase.purchaseOrders.form.expectedDelivery')}</label>
+            <input
+              type="date"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              value={expectedDate}
+              onChange={(e) => setExpectedDate(e.target.value)}
+            />
+          </div>
+        </div>
+
+        {/* PO Items */}
+        <div className="mt-8">
+          <h3 className="text-lg font-medium text-gray-900 mb-4">{t('purchase.purchaseOrders.form.items')}</h3>
+          <div className="space-y-4">
+            {items.map((item) => (
+              <div key={item.id} className="flex items-center space-x-4 rtl:space-x-reverse">
+                <div className="w-48">
+                  <select
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+                    value={item.productId || ''}
+                    onChange={(e) => {
+                      const product = MOCK_PRODUCTS.find(p => p.id === e.target.value);
+                      if (product) {
+                        setItems(items.map(i => 
+                          i.id === item.id 
+                            ? { 
+                                ...i, 
+                                productId: product.id, 
+                                description: product.name, 
+                                rate: product.cost_price || 0 // Use cost price for PO
+                              } 
+                            : i
+                        ));
+                      } else {
+                        updateItem(item.id, 'productId', e.target.value);
+                      }
+                    }}
+                  >
+                    <option value="">{t('purchase.purchaseOrders.form.selectProduct')}</option>
+                    {MOCK_PRODUCTS.map(p => (
+                      <option key={p.id} value={p.id}>{p.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    placeholder={t('purchase.purchaseOrders.form.description')}
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+                    value={item.description}
+                    onChange={(e) => updateItem(item.id, 'description', e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="w-24">
+                  <input
+                    type="number"
+                    placeholder={t('purchase.purchaseOrders.form.quantity')}
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+                    value={item.quantity}
+                    onChange={(e) => updateItem(item.id, 'quantity', Number(e.target.value))}
+                    min="1"
+                  />
+                </div>
+                <div className="w-32">
+                  <input
+                    type="number"
+                    placeholder={t('purchase.purchaseOrders.form.rate')}
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+                    value={item.rate}
+                    onChange={(e) => updateItem(item.id, 'rate', Number(e.target.value))}
+                    min="0"
+                    step="0.01"
+                  />
+                </div>
+                <div className="w-32 text-right rtl:text-left font-medium text-gray-900">
+                  {settings.currency} {(item.quantity * item.rate).toFixed(2)}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => removeItem(item.id)}
+                  className="text-red-600 hover:text-red-900"
+                >
+                  <Trash2 className="h-5 w-5" />
+                </button>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={addItem}
+              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              <Plus className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0" />
+              {t('purchase.purchaseOrders.form.addItem')}
+            </button>
+          </div>
+        </div>
+
+        {/* Footer Section: Notes & Totals */}
+        <div className="mt-8 border-t border-gray-200 pt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Notes */}
+          <div>
+            <label htmlFor="notes" className="block text-sm font-medium text-gray-700">
+              {t('purchase.purchaseOrders.form.notes')}
+            </label>
+            <textarea
+              id="notes"
+              rows={4}
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2 rtl:text-right"
+              placeholder={t('purchase.purchaseOrders.form.enterNotes')}
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+            />
+          </div>
+
+          {/* Totals */}
+          <div className="flex justify-end items-start">
+            <div className="w-64 space-y-3">
+              <div className="flex justify-between text-sm text-gray-500">
+                <span>{t('purchase.purchaseOrders.form.subtotal')}</span>
+                <span>{settings.currency} {subtotal.toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between text-sm text-gray-500">
+                <span>{t('purchase.purchaseOrders.form.vat')} ({settings.vatRate}%)</span>
+                <span>{settings.currency} {tax.toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between text-base font-medium text-gray-900">
+                <span>{t('purchase.purchaseOrders.form.total')}</span>
+                <span>{settings.currency} {total.toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-end pt-8">
+          <button
+            type="submit"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <Save className="h-5 w-5 mr-2 rtl:ml-2 rtl:mr-0" />
+            {t('purchase.purchaseOrders.form.save')}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
