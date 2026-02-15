@@ -54,7 +54,7 @@ export const PrintPreviewModal: React.FC<PrintPreviewModalProps> = ({ isOpen, on
       </div>
 
       {/* Hidden Print Container (Visible only on print) */}
-      <div id="print-container" className="hidden">
+      <div id="print-container" className="hidden print:block">
         {children}
       </div>
     </>

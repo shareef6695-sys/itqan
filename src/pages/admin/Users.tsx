@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { supabase } from '../../lib/supabaseClient';
+import { getSupabaseClient } from '../../lib/supabaseClient';
 import type { Role } from '../../context/AuthContext';
 
 interface UserRow {
@@ -21,6 +21,7 @@ export const Users: React.FC = () => {
     const load = async () => {
       try {
         setError(null);
+        const supabase = getSupabaseClient();
         const { data, error: err } = await supabase
           .from('profiles')
           .select('id, email, full_name, role')
@@ -48,6 +49,7 @@ export const Users: React.FC = () => {
     try {
       setSavingId(id);
       setError(null);
+      const supabase = getSupabaseClient();
       const { error: err } = await supabase
         .from('profiles')
         .update({ role })
@@ -159,4 +161,3 @@ export const Users: React.FC = () => {
     </div>
   );
 };
-

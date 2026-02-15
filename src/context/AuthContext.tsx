@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
-import { supabase } from '../lib/supabaseClient';
+import { getSupabaseClient } from '../lib/supabaseClient';
 
 export type Role = 'owner' | 'admin' | 'manager' | 'user';
 
@@ -15,6 +15,7 @@ export interface AppUser {
 interface AuthContextValue {
   user: AppUser | null;
   loading: boolean;
+  error: string | null;
   signInWithGoogle: () => Promise<void>;
   signInWithEmail: (email: string, password: string) => Promise<void>;
   signUpWithEmail: (email: string, password: string) => Promise<void>;
@@ -25,6 +26,7 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 const mapUser = async (authUser: SupabaseUser): Promise<AppUser> => {
   try {
+    const supabase = getSupabaseClient();
     const { data, error } = await supabase
       .from('profiles')
       .select('role, full_name, avatar_url')
@@ -81,78 +83,115 @@ const mapUser = async (authUser: SupabaseUser): Promise<AppUser> => {
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<AppUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const init = async () => {
-      const { data, error } = await supabase.auth.getSession();
-      if (error) {
-        console.warn('Error getting session', error.message);
+    let unsubscribe: (() => void) | undefined;
+
+    const run = async () => {
+      try {
+        const supabase = getSupabaseClient();
+        const { data, error: sessionError } = await supabase.auth.getSession();
+        if (sessionError) {
+          console.warn('Error getting session', sessionError.message);
+          setLoading(false);
+          return;
+        }
+        if (data.session && data.session.user) {
+          const mapped = await mapUser(data.session.user);
+          setUser(mapped);
+        }
+        const {
+          data: { subscription },
+        } = supabase.auth.onAuthStateChange(async (_event, session) => {
+          if (session && session.user) {
+            const mapped = await mapUser(session.user);
+            setUser(mapped);
+          } else {
+            setUser(null);
+          }
+        });
+        unsubscribe = () => subscription.unsubscribe();
         setLoading(false);
-        return;
+      } catch (e: any) {
+        console.warn('Auth initialization failed', e);
+        setError(e.message ?? 'Authentication is not configured');
+        setLoading(false);
       }
-      if (data.session && data.session.user) {
-        const mapped = await mapUser(data.session.user);
-        setUser(mapped);
-      }
-      setLoading(false);
     };
 
-    init();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      if (session && session.user) {
-        const mapped = await mapUser(session.user);
-        setUser(mapped);
-      } else {
-        setUser(null);
-      }
-    });
+    run();
 
     return () => {
-      subscription.unsubscribe();
+      if (unsubscribe) {
+        unsubscribe();
+      }
     };
   }, []);
 
   const signInWithGoogle = async () => {
-    const origin = window.location.origin;
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: origin,
-      },
-    });
-    if (error) {
-      throw error;
+    try {
+      const supabase = getSupabaseClient();
+      const origin = window.location.origin;
+      const { error: authError } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: origin,
+        },
+      });
+      if (authError) {
+        throw authError;
+      }
+    } catch (e: any) {
+      setError(e.message ?? 'Unable to sign in with Google');
+      throw e;
     }
   };
 
   const signInWithEmail = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      throw error;
+    try {
+      const supabase = getSupabaseClient();
+      const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
+      if (authError) {
+        throw authError;
+      }
+    } catch (e: any) {
+      setError(e.message ?? 'Unable to sign in');
+      throw e;
     }
   };
 
   const signUpWithEmail = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signUp({ email, password });
-    if (error) {
-      throw error;
+    try {
+      const supabase = getSupabaseClient();
+      const { error: signupError } = await supabase.auth.signUp({ email, password });
+      if (signupError) {
+        throw signupError;
+      }
+    } catch (e: any) {
+      setError(e.message ?? 'Unable to create account');
+      throw e;
     }
   };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      throw error;
+    try {
+      const supabase = getSupabaseClient();
+      const { error: signOutError } = await supabase.auth.signOut();
+      if (signOutError) {
+        throw signOutError;
+      }
+      setUser(null);
+    } catch (e: any) {
+      setError(e.message ?? 'Unable to sign out');
+      throw e;
     }
-    setUser(null);
   };
 
   const value: AuthContextValue = {
     user,
     loading,
+    error,
     signInWithGoogle,
     signInWithEmail,
     signUpWithEmail,
@@ -169,4 +208,3 @@ export const useAuth = (): AuthContextValue => {
   }
   return ctx;
 };
-
