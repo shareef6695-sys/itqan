@@ -110,7 +110,8 @@ export const Sidebar: React.FC = () => {
   return (
     <aside className="w-64 bg-white border-e border-gray-200 min-h-screen flex flex-col overflow-y-auto">
       <div className="p-6 border-b border-gray-200">
-        <h1 className="text-2xl font-bold text-indigo-600">ITQanSales</h1>
+        <h1 className="text-2xl font-bold text-indigo-600">Tijarah</h1>
+        <p className="text-xs text-gray-500 mt-1">Smarter Sales. Stronger Finance</p>
       </div>
       <nav className="flex-1 p-4 space-y-1">
         {navItems.map((item) => (
