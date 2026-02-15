@@ -23,12 +23,17 @@ body {
     background: white;
   }
 
-  /* Hide everything by default */
-  body > * {
-    display: none !important;
+  /* Hide everything by default using visibility so print container can override */
+  body * {
+    visibility: hidden !important;
   }
 
-  /* Only show the print container */
+  /* Only show the print container and its contents */
+  #print-container,
+  #print-container * {
+    visibility: visible !important;
+  }
+
   #print-container {
     display: block !important;
     position: absolute;
