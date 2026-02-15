@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { OrganizationProvider } from './context/OrganizationContext';
+import { AuthProvider, useAuth, type Role } from './context/AuthContext';
 import { Layout } from './components/Layout';
 import { Dashboard } from './pages/Dashboard';
 import { Settings } from './pages/admin/Settings';
+import { Users } from './pages/admin/Users';
 import { FinanceDashboard } from './pages/finance/FinanceDashboard';
 import { Expenses } from './pages/finance/Expenses';
 import { Transactions } from './pages/finance/Transactions';
@@ -48,6 +50,68 @@ import { Products } from './pages/inventory/Products';
 import { StockAdjustments } from './pages/inventory/StockAdjustments';
 import { StockTransfers } from './pages/inventory/StockTransfers';
 import { CreateStockTransfer } from './pages/inventory/CreateStockTransfer';
+import { Login } from './pages/auth/Login';
+
+const ProtectedLayout = () => {
+  const { user, loading } = useAuth();
+  const location = useLocation();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-sm text-gray-500">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{ from: location.pathname }}
+      />
+    );
+  }
+
+  return <Layout />;
+};
+
+interface RoleProtectedProps {
+  roles: Role[];
+  children: React.ReactElement;
+}
+
+const RoleProtected = ({ roles, children }: RoleProtectedProps) => {
+  const { user, loading } = useAuth();
+  const location = useLocation();
+
+  if (loading) {
+    return (
+      <div className="p-4 text-sm text-gray-500">Loading...</div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{ from: location.pathname }}
+      />
+    );
+  }
+
+  if (!roles.includes(user.role)) {
+    return (
+      <div className="p-4 text-sm text-red-600">
+        Access denied
+      </div>
+    );
+  }
+
+  return children;
+};
 
 function App() {
   const { i18n } = useTranslation();
@@ -59,11 +123,21 @@ function App() {
 
   return (
     <OrganizationProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout />}>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<ProtectedLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="settings" element={<Settings />} />
+            <Route
+              path="admin/users"
+              element={
+                <RoleProtected roles={['owner', 'admin']}>
+                  <Users />
+                </RoleProtected>
+              }
+            />
             
             {/* Sales Module */}
           <Route path="sales/clients" element={<Clients />} />
@@ -113,8 +187,9 @@ function App() {
           {/* Placeholders for other routes */}
           <Route path="*" element={<div className="p-4">Page not found or under construction</div>} />
         </Route>
-      </Routes>
-      </Router>
+          </Routes>
+        </Router>
+      </AuthProvider>
     </OrganizationProvider>
   );
 }

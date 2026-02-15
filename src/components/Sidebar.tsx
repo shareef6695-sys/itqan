@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../context/AuthContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { 
   LayoutDashboard, 
@@ -30,6 +31,7 @@ interface NavItem {
 
 export const Sidebar: React.FC = () => {
   const { t } = useTranslation();
+  const { user, signOut } = useAuth();
   const location = useLocation();
   const [expandedMenus, setExpandedMenus] = useState<string[]>(['sales']);
 
@@ -90,6 +92,7 @@ export const Sidebar: React.FC = () => {
       ]
     },
     { id: 'settings', name: t('nav.settings'), to: '/settings', icon: Settings },
+    { id: 'users', name: t('nav.users', 'Users and roles'), to: '/admin/users', icon: Users },
   ];
 
   const toggleMenu = (id: string) => {
@@ -175,14 +178,29 @@ export const Sidebar: React.FC = () => {
       </nav>
       <div className="p-4 border-t border-gray-200 space-y-4">
         <LanguageSwitcher />
-        <div className="flex items-center">
-          <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
-            U
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
+              {(user?.name && user.name.charAt(0).toUpperCase()) ||
+                (user?.email && user.email.charAt(0).toUpperCase()) ||
+                'U'}
+            </div>
+            <div className="ms-3">
+              <p className="text-sm font-medium text-gray-700">
+                {user?.name || user?.email || t('common.user', 'User Name')}
+              </p>
+              <p className="text-xs text-gray-500">
+                {user?.email || 'user@example.com'}
+              </p>
+            </div>
           </div>
-          <div className="ms-3">
-            <p className="text-sm font-medium text-gray-700">{t('common.user', 'User Name')}</p>
-            <p className="text-xs text-gray-500">user@example.com</p>
-          </div>
+          <button
+            type="button"
+            onClick={signOut}
+            className="text-xs text-red-600 hover:text-red-700 font-medium"
+          >
+            {t('auth.logout', 'Logout')}
+          </button>
         </div>
       </div>
     </aside>
