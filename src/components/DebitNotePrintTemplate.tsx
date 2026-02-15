@@ -101,7 +101,7 @@ export const DebitNotePrintTemplate: React.FC<DebitNotePrintTemplateProps> = ({ 
             items.map((item, index) => (
               <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
                 <td className="py-3 px-4 text-left rtl:text-right text-gray-600">{index + 1}</td>
-                <td className="py-3 px-4 text-left rtl:text-right font-medium text-gray-900">{item.product}</td>
+                <td className="py-3 px-4 text-left rtl:text-right font-medium text-gray-900">{item.description}</td>
                 <td className="py-3 px-4 text-right rtl:text-left text-gray-600">{item.quantity}</td>
                 <td className="py-3 px-4 text-right rtl:text-left text-gray-600">{settings.currency} {item.rate.toFixed(2)}</td>
                 <td className="py-3 px-4 text-right rtl:text-left text-gray-900 font-medium">{settings.currency} {(item.quantity * item.rate).toFixed(2)}</td>

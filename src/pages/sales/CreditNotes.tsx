@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { RotateCcw, Search, Filter, MoreVertical, Calendar, User, Download, Send, Eye, X, Printer } from 'lucide-react';
+import { RotateCcw, Search, Filter, MoreVertical, Calendar, User, Download, Send, Printer } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useOrganization } from '../../context/OrganizationContext';
 import { PrintPreviewModal } from '../../components/PrintPreviewModal';

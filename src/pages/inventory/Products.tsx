@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Search, Filter, Package, MoreVertical, Edit2, Trash2, X, Printer } from 'lucide-react';
+import { Plus, Search, Filter, Package, Edit2, Trash2, X, Printer } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useOrganization } from '../../context/OrganizationContext';
 import { PrintPreviewModal } from '../../components/PrintPreviewModal';
@@ -230,7 +230,7 @@ export const Products: React.FC = () => {
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {getCategoryLabel(product.category)}
+                  {product.category}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className={`text-sm font-medium ${product.stock_quantity < 20 ? 'text-red-600' : 'text-gray-900'}`}>

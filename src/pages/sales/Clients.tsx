@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Users, Search, Filter, MoreVertical, Mail, Phone, Plus, X, Building, MapPin, FileText, Globe, Printer } from 'lucide-react';
+import React, { useState } from 'react';
+import { Users, Search, Filter, MoreVertical, Mail, Phone, Plus, X, MapPin, Globe, Printer } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useOrganization, GCC_COUNTRIES } from '../../context/OrganizationContext';
 import { PrintPreviewModal } from '../../components/PrintPreviewModal';

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { X, Printer } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,9 +10,7 @@ interface PrintPreviewModalProps {
 }
 
 export const PrintPreviewModal: React.FC<PrintPreviewModalProps> = ({ isOpen, onClose, title, children }) => {
-  const printRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
-
   const modalTitle = title || t('common.printPreview');
 
   if (!isOpen) return null;

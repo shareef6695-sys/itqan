@@ -6,7 +6,6 @@ import { PrintPreviewModal } from '../../../components/PrintPreviewModal';
 import { ReportPrintTemplate, type ReportColumn } from '../../../components/ReportPrintTemplate';
 import { MOCK_INVOICES } from '../../sales/Invoices';
 import { useOrganization } from '../../../context/OrganizationContext';
-import type { Invoice } from '../../sales/Invoices';
 
 export const ZatcaReports: React.FC = () => {
   const { t } = useTranslation();

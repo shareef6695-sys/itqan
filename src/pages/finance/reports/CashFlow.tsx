@@ -217,7 +217,8 @@ export const CashFlow: React.FC = () => {
       >
         <FinancialStatementPrintTemplate
           title={t('finance.cashFlow.title')}
-          subtitle={t('finance.cashFlow.dateRange', { startDate, endDate })}
+          subtitle={t('finance.cashFlow.subtitle')}
+          dateRange={`${startDate} - ${endDate}`}
           sections={getPrintSections()}
         />
       </PrintPreviewModal>

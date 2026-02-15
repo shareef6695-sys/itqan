@@ -14,6 +14,7 @@ export interface PaymentReceipt {
   paymentMode: string;
   reference: string;
   amount: number;
+  notes?: string;
   status: 'unused' | 'partially_used' | 'fully_used';
 }
 

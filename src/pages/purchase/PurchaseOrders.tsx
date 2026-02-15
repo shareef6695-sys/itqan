@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Search, Filter, MoreVertical, Calendar, User, Eye, Download, X } from 'lucide-react';
+import { ShoppingCart, Search, Filter, MoreVertical, Calendar, User, Eye, Download, X, Printer } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useOrganization } from '../../context/OrganizationContext';

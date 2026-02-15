@@ -10,14 +10,13 @@ import {
   Settings, 
   Package, 
   ChevronDown, 
-  ChevronRight,
-  ShoppingCart,
-  Truck,
-  RotateCcw,
-  DollarSign,
-  ShoppingBag,
-  CreditCard,
-  ChevronLeft
+  ChevronRight, 
+  ShoppingCart, 
+  Truck, 
+  RotateCcw, 
+  DollarSign, 
+  ShoppingBag, 
+  CreditCard
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -30,7 +29,7 @@ interface NavItem {
 }
 
 export const Sidebar: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const location = useLocation();
   const [expandedMenus, setExpandedMenus] = useState<string[]>(['sales']);
 

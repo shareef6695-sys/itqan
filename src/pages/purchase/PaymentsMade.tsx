@@ -10,10 +10,12 @@ export interface PaymentMade {
   number: string;
   date: string;
   vendor: string;
+  vendorId?: string;
   amount: number;
-  paymentMode: string;
+  mode: string;
   reference: string;
-  status: 'paid' | 'pending' | 'failed';
+  description: string;
+  status: 'paid' | 'pending' | 'cancelled';
 }
 
 const MOCK_PAYMENTS: PaymentMade[] = [
@@ -22,9 +24,11 @@ const MOCK_PAYMENTS: PaymentMade[] = [
     number: 'PV-2024-001',
     date: '2024-03-10',
     vendor: 'Steel Suppliers Co',
+    vendorId: 'VEND-001',
     amount: 5000.00,
-    paymentMode: 'Bank Transfer',
+    mode: 'Bank Transfer',
     reference: 'TRX-998877',
+    description: 'Payment for PO-2024-001',
     status: 'paid'
   },
   {
@@ -32,9 +36,11 @@ const MOCK_PAYMENTS: PaymentMade[] = [
     number: 'PV-2024-002',
     date: '2024-03-12',
     vendor: 'Industrial Tools Ltd',
+    vendorId: 'VEND-002',
     amount: 1200.50,
-    paymentMode: 'Cheque',
+    mode: 'Cheque',
     reference: 'CHQ-100200',
+    description: 'Advance payment for tools',
     status: 'paid'
   }
 ];
@@ -51,7 +57,7 @@ export const PaymentsMade: React.FC = () => {
     switch (status) {
       case 'paid': return 'bg-green-100 text-green-800';
       case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'failed': return 'bg-red-100 text-red-800';
+      case 'cancelled': return 'bg-red-100 text-red-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -149,7 +155,7 @@ export const PaymentsMade: React.FC = () => {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm text-gray-900 flex items-center">
                       <CreditCard className="h-4 w-4 mr-2 rtl:ml-2 rtl:mr-0 text-gray-400" />
-                      {t(`common.paymentModes.${payment.paymentMode}`) || payment.paymentMode}
+                      {t(`common.paymentModes.${payment.mode}`) || payment.mode}
                     </div>
                     <div className="text-xs text-gray-500 ml-6 rtl:mr-6 rtl:ml-0">
                       {t('purchase.paymentsMade.table.ref')}: {payment.reference}

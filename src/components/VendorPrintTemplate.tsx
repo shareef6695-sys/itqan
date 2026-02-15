@@ -5,15 +5,18 @@ import { useTranslation } from 'react-i18next';
 // Define interface locally to avoid circular dependencies
 export interface Vendor {
   id: string;
-  name: string;
+  vendorId: string;
+  companyName: string;
+  contactPerson: string;
   email: string;
   phone: string;
-  contactPerson: string;
-  taxId: string;
-  currency: string;
   address: string;
+  country: string;
+  crNumber: string;
+  vatNumber: string;
+  vatRate: number;
   status: 'active' | 'inactive';
-  createdAt?: string;
+  balance: number;
 }
 
 interface VendorPrintTemplateProps {
@@ -55,7 +58,7 @@ export const VendorPrintTemplate: React.FC<VendorPrintTemplateProps> = ({ data }
       {/* Vendor Details */}
       <div className="mb-8">
         <div className="bg-gray-50 p-4 rounded-t-lg border border-gray-200 border-b-0">
-          <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide rtl:text-right">{data.name}</h3>
+          <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide rtl:text-right">{data.companyName}</h3>
         </div>
         <div className="border border-gray-200 rounded-b-lg p-6">
           <div className="grid grid-cols-2 gap-x-8 gap-y-6">
@@ -83,12 +86,12 @@ export const VendorPrintTemplate: React.FC<VendorPrintTemplateProps> = ({ data }
               
               <div className="mb-3">
                 <span className="block text-gray-500 text-xs mb-1">{t('purchase.vendors.print.vatNumber')}</span>
-                <span className="text-gray-900 font-medium">{data.taxId || '-'}</span>
+                <span className="text-gray-900 font-medium">{data.vatNumber || '-'}</span>
               </div>
               
               <div className="mb-3">
                 <span className="block text-gray-500 text-xs mb-1">{t('common.currency')}</span>
-                <span className="text-gray-900 font-medium">{data.currency}</span>
+                <span className="text-gray-900 font-medium">{settings.currency}</span>
               </div>
 
               <div>
@@ -98,11 +101,6 @@ export const VendorPrintTemplate: React.FC<VendorPrintTemplateProps> = ({ data }
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className="text-center text-gray-400 text-xs mt-12 pt-8 border-t border-gray-100">
-        <p>{t('purchase.vendors.print.generatedOn')}: {new Date().toLocaleDateString()}</p>
       </div>
     </div>
   );

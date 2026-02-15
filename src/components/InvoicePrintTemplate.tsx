@@ -27,13 +27,13 @@ export const InvoicePrintTemplate: React.FC<InvoicePrintTemplateProps> = ({ data
   }
 
   // Generate ZATCA QR Code Data
-  const zatcaTLV = generateZatcaTLV(
-    settings.companyName,
-    settings.vatNumber,
-    data.date, // Should be timestamp ideally
-    data.amount.toString(),
-    tax.toString()
-  );
+  const zatcaTLV = generateZatcaTLV({
+    sellerName: settings.companyName,
+    vatRegistrationNumber: settings.vatNumber,
+    timestamp: data.date, // Should be timestamp ideally
+    invoiceTotal: data.amount.toString(),
+    vatTotal: tax.toString()
+  });
 
   return (
     <div className="bg-white p-8 max-w-[210mm] mx-auto min-h-[297mm] text-sm text-gray-900 font-sans" dir={document.dir}>

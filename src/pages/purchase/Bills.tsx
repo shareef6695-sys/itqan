@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, Search, Filter, MoreVertical, Calendar, User, Eye, Download, Printer } from 'lucide-react';
+import { FileText, Search, Filter, MoreVertical, Calendar, Download, Printer } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useOrganization } from '../../context/OrganizationContext';

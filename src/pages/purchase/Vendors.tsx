@@ -313,7 +313,7 @@ export const Vendors: React.FC = () => {
         title={selectedVendor ? t('purchase.vendors.print.vendorTitle', { name: selectedVendor.companyName }) : t('purchase.vendors.print.listTitle')}
       >
         {selectedVendor ? (
-            <VendorPrintTemplate vendor={selectedVendor} />
+            <VendorPrintTemplate data={selectedVendor} />
         ) : (
             <ReportPrintTemplate
               title={t('purchase.vendors.print.listTitle')}

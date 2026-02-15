@@ -64,7 +64,7 @@ export interface ZatcaComplianceStatus {
 
 export const ZatcaService = {
   // Mock function to simulate CSR Generation
-  generateCSR: async (config: any): Promise<string> => {
+  generateCSR: async (_config: any): Promise<string> => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(`-----BEGIN CERTIFICATE REQUEST-----
@@ -79,7 +79,7 @@ AQEAzm...
   },
 
   // Mock function to simulate Compliance Check
-  requestCompliance: async (csr: string): Promise<ZatcaComplianceStatus> => {
+  requestCompliance: async (_csr: string): Promise<ZatcaComplianceStatus> => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Plus, Search, Filter, ArrowUp, ArrowDown, X, Trash2, Printer, Download, Send, MoreVertical } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { MOCK_PRODUCTS } from './Products';
-import type { Product } from './Products';
 import { useOrganization } from '../../context/OrganizationContext';
 import { PrintPreviewModal } from '../../components/PrintPreviewModal';
 import { StockAdjustmentPrintTemplate } from '../../components/StockAdjustmentPrintTemplate';

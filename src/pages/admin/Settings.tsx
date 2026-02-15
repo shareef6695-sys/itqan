@@ -275,7 +275,7 @@ export const Settings: React.FC = () => {
                     </div>
 
                     <div className="space-y-4">
-                        {formData.warehouses?.map((warehouse, index) => (
+                        {formData.warehouses?.map((warehouse) => (
                             <div key={warehouse.id} className="flex items-center gap-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
                                 <div className="flex-1">
                                     <label className="block text-xs font-medium text-gray-500">{t('settings.warehouses.name')}</label>

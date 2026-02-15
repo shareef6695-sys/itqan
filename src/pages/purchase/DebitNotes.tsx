@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { RotateCcw, Search, Filter, MoreVertical, Calendar, User, Eye, Download, Printer } from 'lucide-react';
+import { RotateCcw, Search, Filter, MoreVertical, Calendar, Download, Printer } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useOrganization } from '../../context/OrganizationContext';
 import { PrintPreviewModal } from '../../components/PrintPreviewModal';
 import { DebitNotePrintTemplate } from '../../components/DebitNotePrintTemplate';
 
-interface DebitNoteItem {
+export interface DebitNoteItem {
   id: string;
   description: string;
   quantity: number;

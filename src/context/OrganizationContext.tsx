@@ -22,6 +22,14 @@ export interface ZatcaSettings {
 export interface OrganizationSettings {
   companyName: string;
   address: string;
+  city?: string;
+  phone?: string;
+  email?: string;
+  website?: string;
+  logo?: string;
+  bankName?: string;
+  accountNumber?: string;
+  iban?: string;
   country: string;
   crNumber: string;
   vatNumber: string;
@@ -51,6 +59,14 @@ export const GCC_COUNTRIES: Record<string, { currency: string; vatRate: number }
 const DEFAULT_SETTINGS: OrganizationSettings = {
   companyName: 'My Company',
   address: '',
+  city: '',
+  phone: '',
+  email: '',
+  website: '',
+  logo: '',
+  bankName: '',
+  accountNumber: '',
+  iban: '',
   country: 'Saudi Arabia',
   crNumber: '',
   vatNumber: '',
