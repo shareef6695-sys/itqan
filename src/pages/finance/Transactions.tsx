@@ -16,12 +16,7 @@ interface Transaction {
   reference: string;
 }
 
-const initialTransactions: Transaction[] = [
-  { id: '1', date: '2024-03-15', description: 'Invoice #INV-001 Payment', amount: 1250.00, type: 'Credit', category: 'sales', reference: 'INV-001' },
-  { id: '2', date: '2024-03-14', description: 'Office Rent March', amount: 2000.00, type: 'Debit', category: 'rent', reference: 'EXP-042' },
-  { id: '3', date: '2024-03-12', description: 'Client Payment - ACME Corp', amount: 4500.50, type: 'Credit', category: 'sales', reference: 'INV-002' },
-  { id: '4', date: '2024-03-10', description: 'AWS Subscription', amount: 120.00, type: 'Debit', category: 'software', reference: 'EXP-041' },
-];
+const initialTransactions: Transaction[] = [];
 
 export const Transactions: React.FC = () => {
   const { t } = useTranslation();

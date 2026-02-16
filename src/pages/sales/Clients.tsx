@@ -22,53 +22,7 @@ interface Client {
   balance: number;
 }
 
-const MOCK_CLIENTS: Client[] = [
-  {
-    id: '1',
-    customerId: 'CUST-001',
-    companyName: 'Acme Corp',
-    contactPerson: 'John Smith',
-    email: 'john@acme.com',
-    phone: '+1 (555) 123-4567',
-    address: '123 Business Rd, Tech City',
-    country: 'United States',
-    crNumber: 'CR-123456',
-    vatNumber: 'US-VAT-789',
-    vatRate: 0,
-    status: 'active',
-    balance: 1250.00
-  },
-  {
-    id: '2',
-    customerId: 'CUST-002',
-    companyName: 'TechStart Inc',
-    contactPerson: 'Sarah Johnson',
-    email: 'sarah@techstart.io',
-    phone: '+1 (555) 987-6543',
-    address: '456 Startup Ln, Innovation Valley',
-    country: 'United Kingdom',
-    crNumber: 'CR-987654',
-    vatNumber: 'GB-VAT-456',
-    vatRate: 20,
-    status: 'active',
-    balance: 0.00
-  },
-  {
-    id: '3',
-    customerId: 'CUST-003',
-    companyName: 'Global Trading',
-    contactPerson: 'Michael Brown',
-    email: 'm.brown@global.com',
-    phone: '+1 (555) 456-7890',
-    address: '789 Trade Center, Commerce City',
-    country: 'Saudi Arabia',
-    crNumber: 'CR-456789',
-    vatNumber: 'SA-VAT-123',
-    vatRate: 15,
-    status: 'inactive',
-    balance: 500.50
-  }
-];
+const MOCK_CLIENTS: Client[] = [];
 
 const VAT_RATES: Record<string, number> = {
   ...Object.keys(GCC_COUNTRIES).reduce((acc, country) => ({

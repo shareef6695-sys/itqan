@@ -24,45 +24,7 @@ interface Quotation {
   items?: QuotationItem[];
 }
 
-const MOCK_QUOTATIONS: Quotation[] = [
-  {
-    id: '1',
-    number: 'QT-2024-001',
-    client: 'Acme Corp',
-    date: '2024-03-01',
-    expiryDate: '2024-03-15',
-    amount: 1250.00,
-    status: 'sent',
-    items: [
-      { id: '1', description: 'Consulting Services', quantity: 10, rate: 100 },
-      { id: '2', description: 'Software License', quantity: 1, rate: 250 }
-    ]
-  },
-  {
-    id: '2',
-    number: 'QT-2024-002',
-    client: 'TechStart Inc',
-    date: '2024-03-05',
-    expiryDate: '2024-03-20',
-    amount: 3400.00,
-    status: 'draft',
-    items: [
-      { id: '1', description: 'Web Development', quantity: 40, rate: 85 }
-    ]
-  },
-  {
-    id: '3',
-    number: 'QT-2024-003',
-    client: 'Global Trading',
-    date: '2024-02-28',
-    expiryDate: '2024-03-14',
-    amount: 850.00,
-    status: 'accepted',
-    items: [
-      { id: '1', description: 'Maintenance', quantity: 5, rate: 170 }
-    ]
-  }
-];
+const MOCK_QUOTATIONS: Quotation[] = [];
 
 export const Quotations: React.FC = () => {
   const navigate = useNavigate();

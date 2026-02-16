@@ -27,51 +27,7 @@ interface ProformaInvoice {
   tax: number;
 }
 
-const MOCK_PROFORMAS: ProformaInvoice[] = [
-  {
-    id: '1',
-    number: 'PI-2024-001',
-    client: 'Acme Corp',
-    date: '2024-03-01',
-    expiryDate: '2024-03-15',
-    amount: 1250.00,
-    status: 'sent',
-    subtotal: 1086.96,
-    tax: 163.04,
-    items: [
-        { id: '1', description: 'Consulting Services', quantity: 10, rate: 100, amount: 1000 },
-        { id: '2', description: 'Software License', quantity: 1, rate: 86.96, amount: 86.96 }
-    ]
-  },
-  {
-    id: '2',
-    number: 'PI-2024-002',
-    client: 'TechStart Inc',
-    date: '2024-03-05',
-    expiryDate: '2024-03-20',
-    amount: 5000.00,
-    status: 'draft',
-    subtotal: 4347.83,
-    tax: 652.17,
-    items: [
-        { id: '3', description: 'Server Setup', quantity: 1, rate: 4347.83, amount: 4347.83 }
-    ]
-  },
-  {
-    id: '3',
-    number: 'PI-2024-003',
-    client: 'Global Trading',
-    date: '2024-03-08',
-    expiryDate: '2024-03-22',
-    amount: 3500.00,
-    status: 'converted',
-    subtotal: 3043.48,
-    tax: 456.52,
-    items: [
-        { id: '4', description: 'Annual Maintenance', quantity: 1, rate: 3043.48, amount: 3043.48 }
-    ]
-  }
-];
+const MOCK_PROFORMAS: ProformaInvoice[] = [];
 
 export const ProformaInvoices: React.FC = () => {
   const navigate = useNavigate();

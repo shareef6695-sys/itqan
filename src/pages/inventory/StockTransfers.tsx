@@ -24,38 +24,7 @@ export interface StockTransfer {
   items?: StockTransferItem[];
 }
 
-const MOCK_TRANSFERS: StockTransfer[] = [
-  {
-    id: '1',
-    reference: 'TRF-001',
-    date: '2024-03-25',
-    fromWarehouseId: '1',
-    fromWarehouseName: 'Main Warehouse',
-    toWarehouseId: '2',
-    toWarehouseName: 'Site A Warehouse',
-    status: 'completed',
-    itemsCount: 5,
-    items: [
-        { productId: '1', productName: 'Steel Beam I-200', quantity: 2 },
-        { productId: '2', productName: 'Cement Bag 50kg', quantity: 3 }
-    ]
-  },
-  {
-    id: '2',
-    reference: 'TRF-002',
-    date: '2024-03-28',
-    fromWarehouseId: '1',
-    fromWarehouseName: 'Main Warehouse',
-    toWarehouseId: '3',
-    toWarehouseName: 'Site B Warehouse',
-    status: 'in_transit',
-    itemsCount: 12,
-    items: [
-        { productId: '3', productName: 'Rebar 12mm', quantity: 10 },
-        { productId: '4', productName: 'Sand Ton', quantity: 2 }
-    ]
-  }
-];
+const MOCK_TRANSFERS: StockTransfer[] = [];
 
 export const StockTransfers: React.FC = () => {
   const { t } = useTranslation();

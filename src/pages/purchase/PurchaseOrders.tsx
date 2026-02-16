@@ -24,45 +24,7 @@ interface PurchaseOrder {
   items?: PurchaseOrderItem[];
 }
 
-const MOCK_PURCHASE_ORDERS: PurchaseOrder[] = [
-  {
-    id: '1',
-    number: 'PO-2024-001',
-    vendor: 'Steel Suppliers Co.',
-    date: '2024-03-01',
-    deliveryDate: '2024-03-10',
-    amount: 5000.00,
-    status: 'sent',
-    items: [
-      { id: '1', description: 'Raw Steel Sheets', quantity: 50, rate: 100 }
-    ]
-  },
-  {
-    id: '2',
-    number: 'PO-2024-002',
-    vendor: 'Office Depot',
-    date: '2024-03-05',
-    deliveryDate: '2024-03-12',
-    amount: 250.00,
-    status: 'received',
-    items: [
-      { id: '1', description: 'Office Paper', quantity: 10, rate: 5 },
-      { id: '2', description: 'Printer Ink', quantity: 4, rate: 50 }
-    ]
-  },
-  {
-    id: '3',
-    number: 'PO-2024-003',
-    vendor: 'Industrial Parts Ltd',
-    date: '2024-03-08',
-    deliveryDate: '2024-03-20',
-    amount: 1200.00,
-    status: 'draft',
-    items: [
-      { id: '1', description: 'Machine Bearings', quantity: 20, rate: 60 }
-    ]
-  }
-];
+const MOCK_PURCHASE_ORDERS: PurchaseOrder[] = [];
 
 export const PurchaseOrders: React.FC = () => {
   const { t } = useTranslation();

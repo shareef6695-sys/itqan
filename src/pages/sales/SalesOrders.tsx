@@ -25,45 +25,7 @@ export interface SalesOrder {
   items: SalesOrderItem[];
 }
 
-export const MOCK_SALES_ORDERS: SalesOrder[] = [
-  {
-    id: '1',
-    number: 'SO-2024-001',
-    client: 'Acme Corp',
-    date: '2024-03-01',
-    deliveryDate: '2024-03-10',
-    amount: 5000.00,
-    status: 'confirmed',
-    items: [
-      { id: '1', description: 'Steel Pipes', quantity: 100, rate: 50, unit: 'pcs' },
-      { id: '2', description: 'Iron Rods', quantity: 50, rate: 20, unit: 'kg' }
-    ]
-  },
-  {
-    id: '2',
-    number: 'SO-2024-002',
-    client: 'TechStart Inc',
-    date: '2024-03-05',
-    deliveryDate: '2024-03-15',
-    amount: 12000.00,
-    status: 'pending',
-    items: [
-      { id: '3', description: 'Industrial Beams', quantity: 20, rate: 600, unit: 'pcs' }
-    ]
-  },
-  {
-    id: '3',
-    number: 'SO-2024-003',
-    client: 'Global Trading',
-    date: '2024-03-08',
-    deliveryDate: '2024-03-20',
-    amount: 3500.00,
-    status: 'shipped',
-    items: [
-      { id: '4', description: 'Steel Sheets', quantity: 50, rate: 70, unit: 'pcs' }
-    ]
-  }
-];
+export const MOCK_SALES_ORDERS: SalesOrder[] = [];
 
 export const SalesOrders: React.FC = () => {
   const navigate = useNavigate();

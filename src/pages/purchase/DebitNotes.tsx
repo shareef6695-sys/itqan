@@ -25,32 +25,7 @@ interface DebitNote {
   items?: DebitNoteItem[];
 }
 
-const MOCK_DEBIT_NOTES: DebitNote[] = [
-  {
-    id: '1',
-    number: 'DN-2024-001',
-    vendor: 'Steel Suppliers Co.',
-    billReference: 'BILL-2024-001',
-    date: '2024-03-03',
-    amount: 500.00,
-    status: 'issued',
-    items: [
-      { id: '1', description: 'Return of Defective Steel', quantity: 5, rate: 100, amount: 500 }
-    ]
-  },
-  {
-    id: '2',
-    number: 'DN-2024-002',
-    vendor: 'Office Depot',
-    billReference: 'BILL-2024-002',
-    date: '2024-03-06',
-    amount: 50.00,
-    status: 'settled',
-    items: [
-      { id: '1', description: 'Return of Extra Paper', quantity: 10, rate: 5, amount: 50 }
-    ]
-  }
-];
+const MOCK_DEBIT_NOTES: DebitNote[] = [];
 
 export const DebitNotes: React.FC = () => {
   const navigate = useNavigate();

@@ -18,32 +18,7 @@ export interface PaymentMade {
   status: 'paid' | 'pending' | 'cancelled';
 }
 
-const MOCK_PAYMENTS: PaymentMade[] = [
-  {
-    id: '1',
-    number: 'PV-2024-001',
-    date: '2024-03-10',
-    vendor: 'Steel Suppliers Co',
-    vendorId: 'VEND-001',
-    amount: 5000.00,
-    mode: 'Bank Transfer',
-    reference: 'TRX-998877',
-    description: 'Payment for PO-2024-001',
-    status: 'paid'
-  },
-  {
-    id: '2',
-    number: 'PV-2024-002',
-    date: '2024-03-12',
-    vendor: 'Industrial Tools Ltd',
-    vendorId: 'VEND-002',
-    amount: 1200.50,
-    mode: 'Cheque',
-    reference: 'CHQ-100200',
-    description: 'Advance payment for tools',
-    status: 'paid'
-  }
-];
+const MOCK_PAYMENTS: PaymentMade[] = [];
 
 export const PaymentsMade: React.FC = () => {
   const { t } = useTranslation();

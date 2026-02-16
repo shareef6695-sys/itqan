@@ -21,46 +21,7 @@ export interface DeliveryChallan {
   items?: DeliveryItem[];
 }
 
-const MOCK_CHALLANS: DeliveryChallan[] = [
-  {
-    id: '1',
-    number: 'DC-2024-001',
-    client: 'Acme Corp',
-    date: '2024-03-01',
-    reference: 'PO-12345',
-    status: 'delivered',
-    itemCount: 5,
-    items: [
-        { description: 'Industrial Steel Beam', quantity: 2 },
-        { description: 'Concrete Mix 50kg', quantity: 3 }
-    ]
-  },
-  {
-    id: '2',
-    number: 'DC-2024-002',
-    client: 'TechStart Inc',
-    date: '2024-03-05',
-    reference: 'PO-67890',
-    status: 'pending',
-    itemCount: 12,
-    items: [
-        { description: 'Server Rack 42U', quantity: 2 },
-        { description: 'Cat6 Cable Roll', quantity: 10 }
-    ]
-  },
-  {
-    id: '3',
-    number: 'DC-2024-003',
-    client: 'Global Trading',
-    date: '2024-02-28',
-    reference: 'PO-11223',
-    status: 'returned',
-    itemCount: 3,
-    items: [
-        { description: 'Defective Monitor', quantity: 3 }
-    ]
-  },
-];
+const MOCK_CHALLANS: DeliveryChallan[] = [];
 
 export const DeliveryChallans: React.FC = () => {
   const navigate = useNavigate();

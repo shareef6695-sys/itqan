@@ -20,47 +20,7 @@ export interface Product {
   reorder_point: number;
 }
 
-export const MOCK_PRODUCTS: Product[] = [
-  {
-    id: '1',
-    name: 'Steel Pipe 2"',
-    sku: 'SP-002',
-    description: '2 inch diameter steel pipe, standard grade',
-    unit_price: 45.00,
-    cost_price: 30.00,
-    stock_quantity: 150,
-    unit: 'pcs',
-    category: 'Raw Materials',
-    status: 'active',
-    reorder_point: 50
-  },
-  {
-    id: '2',
-    name: 'Iron Rod 10mm',
-    sku: 'IR-010',
-    description: '10mm reinforced iron rod for construction',
-    unit_price: 12.50,
-    cost_price: 8.50,
-    stock_quantity: 500,
-    unit: 'pcs',
-    category: 'Raw Materials',
-    status: 'active',
-    reorder_point: 100
-  },
-  {
-    id: '3',
-    name: 'Welding Kit',
-    sku: 'WK-PRO',
-    description: 'Professional grade welding kit with accessories',
-    unit_price: 250.00,
-    cost_price: 180.00,
-    stock_quantity: 15,
-    unit: 'set',
-    category: 'Equipment',
-    status: 'active',
-    reorder_point: 10
-  }
-];
+export const MOCK_PRODUCTS: Product[] = [];
 
 export const Products: React.FC = () => {
   const { t } = useTranslation();

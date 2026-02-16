@@ -26,45 +26,7 @@ export interface Invoice {
   items?: InvoiceItem[];
 }
 
-export const MOCK_INVOICES: Invoice[] = [
-  {
-    id: '1',
-    number: 'INV-2024-001',
-    client: 'Acme Corp',
-    date: '2024-03-01',
-    dueDate: '2024-03-15',
-    amount: 1250.00,
-    status: 'paid',
-    items: [
-        { id: '1', description: 'Consulting Services', quantity: 10, rate: 100 },
-        { id: '2', description: 'Software License', quantity: 1, rate: 250 }
-    ]
-  },
-  {
-    id: '2',
-    number: 'INV-2024-002',
-    client: 'TechStart Inc',
-    date: '2024-03-05',
-    dueDate: '2024-03-20',
-    amount: 3400.00,
-    status: 'pending',
-    items: [
-        { id: '1', description: 'Web Development', quantity: 40, rate: 85 }
-    ]
-  },
-  {
-    id: '3',
-    number: 'INV-2024-003',
-    client: 'Global Trading',
-    date: '2024-02-28',
-    dueDate: '2024-03-14',
-    amount: 850.00,
-    status: 'overdue',
-    items: [
-        { id: '1', description: 'Maintenance', quantity: 5, rate: 170 }
-    ]
-  }
-];
+export const MOCK_INVOICES: Invoice[] = [];
 
 export const Invoices: React.FC = () => {
   const navigate = useNavigate();

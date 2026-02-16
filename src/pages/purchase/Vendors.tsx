@@ -22,53 +22,7 @@ interface Vendor {
   balance: number;
 }
 
-export const MOCK_VENDORS: Vendor[] = [
-  {
-    id: '1',
-    vendorId: 'VEND-001',
-    companyName: 'Steel Suppliers Co',
-    contactPerson: 'Robert Wilson',
-    email: 'robert@steelsuppliers.com',
-    phone: '+1 (555) 111-2222',
-    address: '789 Industrial Park, Metal City',
-    country: 'United States',
-    crNumber: 'CR-888999',
-    vatNumber: 'US-VAT-111',
-    vatRate: 0,
-    status: 'active',
-    balance: 5000.00
-  },
-  {
-    id: '2',
-    vendorId: 'VEND-002',
-    companyName: 'Global Logistics Ltd',
-    contactPerson: 'Emily Chen',
-    email: 'emily@globallogistics.com',
-    phone: '+1 (555) 333-4444',
-    address: '456 Harbor View, Port City',
-    country: 'United Kingdom',
-    crNumber: 'CR-777666',
-    vatNumber: 'GB-VAT-222',
-    vatRate: 20,
-    status: 'active',
-    balance: 1200.50
-  },
-  {
-    id: '3',
-    vendorId: 'VEND-003',
-    companyName: 'Office Supplies Inc',
-    contactPerson: 'David Miller',
-    email: 'david@officesupplies.com',
-    phone: '+1 (555) 555-6666',
-    address: '101 Main St, Business District',
-    country: 'Saudi Arabia',
-    crNumber: 'CR-555444',
-    vatNumber: 'SA-VAT-333',
-    vatRate: 15,
-    status: 'inactive',
-    balance: 0.00
-  }
-];
+export const MOCK_VENDORS: Vendor[] = [];
 
 const VAT_RATES: Record<string, number> = {
   ...Object.keys(GCC_COUNTRIES).reduce((acc, country) => ({

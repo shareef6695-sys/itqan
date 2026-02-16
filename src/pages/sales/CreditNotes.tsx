@@ -20,36 +20,7 @@ interface CreditNote {
   tax: number;
 }
 
-const MOCK_CREDIT_NOTES: CreditNote[] = [
-  {
-    id: '1',
-    number: 'CN-2024-001',
-    invoiceNumber: 'INV-2024-001',
-    client: 'Acme Corp',
-    date: '2024-03-02',
-    amount: 150.00,
-    status: 'approved',
-    subtotal: 130.43,
-    tax: 19.57,
-    items: [
-        { id: '1', description: 'Return of Damaged Goods', quantity: 1, rate: 130.43, amount: 130.43 }
-    ]
-  },
-  {
-    id: '2',
-    number: 'CN-2024-002',
-    invoiceNumber: 'INV-2024-003',
-    client: 'Global Trading',
-    date: '2024-03-05',
-    amount: 50.00,
-    status: 'draft',
-    subtotal: 43.48,
-    tax: 6.52,
-    items: [
-        { id: '2', description: 'Overcharge Adjustment', quantity: 1, rate: 43.48, amount: 43.48 }
-    ]
-  }
-];
+const MOCK_CREDIT_NOTES: CreditNote[] = [];
 
 export const CreditNotes: React.FC = () => {
   const navigate = useNavigate();

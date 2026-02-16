@@ -18,38 +18,7 @@ export interface PaymentReceipt {
   status: 'unused' | 'partially_used' | 'fully_used';
 }
 
-const MOCK_RECEIPTS: PaymentReceipt[] = [
-  {
-    id: '1',
-    number: 'RCP-2024-001',
-    client: 'Acme Corp',
-    date: '2024-03-01',
-    paymentMode: 'Bank Transfer',
-    reference: 'TRX-987654',
-    amount: 1250.00,
-    status: 'fully_used'
-  },
-  {
-    id: '2',
-    number: 'RCP-2024-002',
-    client: 'TechStart Inc',
-    date: '2024-03-05',
-    paymentMode: 'Credit Card',
-    reference: 'Visa-4242',
-    amount: 5000.00,
-    status: 'unused'
-  },
-  {
-    id: '3',
-    number: 'RCP-2024-003',
-    client: 'Global Trading',
-    date: '2024-02-28',
-    paymentMode: 'Check',
-    reference: 'CHK-00123',
-    amount: 850.00,
-    status: 'partially_used'
-  }
-];
+const MOCK_RECEIPTS: PaymentReceipt[] = [];
 
 export const PaymentReceipts: React.FC = () => {
   const navigate = useNavigate();

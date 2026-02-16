@@ -24,33 +24,7 @@ export interface AdjustmentItem {
   currentStock: number;
 }
 
-const MOCK_ADJUSTMENTS: StockAdjustment[] = [
-  {
-    id: '1',
-    date: '2024-03-15',
-    reference: 'ADJ-001',
-    warehouseId: '1',
-    warehouseName: 'Main Warehouse',
-    reason: 'Stocktake',
-    status: 'adjusted',
-    items: [
-      { productId: '1', productName: 'Steel Pipe 2"', quantityChange: -5, currentStock: 150 },
-      { productId: '2', productName: 'Iron Rod 10mm', quantityChange: 20, currentStock: 500 }
-    ]
-  },
-  {
-    id: '2',
-    date: '2024-03-20',
-    reference: 'ADJ-002',
-    warehouseId: '1',
-    warehouseName: 'Main Warehouse',
-    reason: 'Damaged',
-    status: 'draft',
-    items: [
-      { productId: '3', productName: 'Welding Kit', quantityChange: -1, currentStock: 15 }
-    ]
-  }
-];
+const MOCK_ADJUSTMENTS: StockAdjustment[] = [];
 
 export const StockAdjustments: React.FC = () => {
   const { t } = useTranslation();

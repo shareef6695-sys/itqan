@@ -25,45 +25,7 @@ interface Bill {
   items?: BillItem[];
 }
 
-export const MOCK_BILLS: Bill[] = [
-  {
-    id: '1',
-    number: 'BILL-2024-001',
-    vendor: 'Steel Suppliers Co.',
-    date: '2024-03-01',
-    dueDate: '2024-03-31',
-    amount: 5000.00,
-    status: 'pending',
-    items: [
-      { id: '1', description: 'Raw Steel Sheets', quantity: 50, rate: 100, amount: 5000 }
-    ]
-  },
-  {
-    id: '2',
-    number: 'BILL-2024-002',
-    vendor: 'Office Depot',
-    date: '2024-03-05',
-    dueDate: '2024-03-15',
-    amount: 262.50,
-    status: 'paid',
-    items: [
-      { id: '1', description: 'Office Paper', quantity: 10, rate: 5, amount: 50 },
-      { id: '2', description: 'Printer Ink', quantity: 4, rate: 50, amount: 200 }
-    ]
-  },
-  {
-    id: '3',
-    number: 'BILL-2024-003',
-    vendor: 'Power Utility Corp',
-    date: '2024-02-15',
-    dueDate: '2024-03-01',
-    amount: 1500.00,
-    status: 'overdue',
-    items: [
-      { id: '1', description: 'Electricity Bill - Feb', quantity: 1, rate: 1500, amount: 1500 }
-    ]
-  }
-];
+export const MOCK_BILLS: Bill[] = [];
 
 export const Bills: React.FC = () => {
   const { t } = useTranslation();

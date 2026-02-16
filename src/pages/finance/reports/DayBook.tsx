@@ -17,68 +17,7 @@ interface DayBookEntry {
   credit: number;
 }
 
-const MOCK_ENTRIES: DayBookEntry[] = [
-  { 
-    id: '1', 
-    date: '2024-03-20', 
-    voucherType: 'Sales', 
-    voucherNo: 'INV-001', 
-    description: 'Sales to ACME Corp', 
-    accountName: 'Sales Account', 
-    debit: 0, 
-    credit: 1250.00 
-  },
-  { 
-    id: '2', 
-    date: '2024-03-20', 
-    voucherType: 'Receipt', 
-    voucherNo: 'RCT-001', 
-    description: 'Payment received from ACME Corp', 
-    accountName: 'Cash', 
-    debit: 1250.00, 
-    credit: 0 
-  },
-  { 
-    id: '3', 
-    date: '2024-03-20', 
-    voucherType: 'Payment', 
-    voucherNo: 'PYM-001', 
-    description: 'Office Rent Payment', 
-    accountName: 'Bank Transfer', 
-    debit: 0, 
-    credit: 2000.00 
-  },
-  { 
-    id: '4', 
-    date: '2024-03-20', 
-    voucherType: 'Journal', 
-    voucherNo: 'JNL-001', 
-    description: 'Rent Expense Booking', 
-    accountName: 'Rent Expense', 
-    debit: 2000.00, 
-    credit: 0 
-  },
-  { 
-    id: '5', 
-    date: '2024-03-20', 
-    voucherType: 'Purchase', 
-    voucherNo: 'PUR-001', 
-    description: 'Purchase of Office Supplies', 
-    accountName: 'Office Supplies', 
-    debit: 150.00, 
-    credit: 0 
-  },
-  { 
-    id: '6', 
-    date: '2024-03-20', 
-    voucherType: 'Payment', 
-    voucherNo: 'PYM-002', 
-    description: 'Payment for Supplies', 
-    accountName: 'Petty Cash', 
-    debit: 0, 
-    credit: 150.00 
-  }
-];
+const MOCK_ENTRIES: DayBookEntry[] = [];
 
 export const DayBook: React.FC = () => {
   const { t } = useTranslation();
